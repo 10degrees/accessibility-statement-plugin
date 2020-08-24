@@ -136,37 +136,34 @@ class AccessibilityStatementGenerator
 
     public function getConformanceDetails($status)
     {
-        switch ($status) {
-            case 'fully':
-                return [
-                    'name' => 'fully conformant',
-                    'description' => 'Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.',
-                ];
-                break;
-            case 'partially':
-                return [
-                    'name' => 'partially conformant',
-                    'description' => 'Partially conformant means that some parts of the content do not fully conform to the accessibility standard.',
-                ];
-                break;
-            case 'non_conformant':
-                return [
-                    'name' => 'non conformant',
-                    'description' => 'Non conformant means that the content does not conform the accessibility standard.',
-                ];
-                break;
-            case 'not_assessed':
-                return [
-                    'name' => 'not assessed',
-                    'description' => 'Not assessed means that the content has not been evaluated or the evaluation results are not available.',
-                ];
-                break;
+        $conformance_details = [
+            'fully' => [
+                'name' => 'fully conformant',
+                'description' => 'Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.',
+            ],
+            'partially' => [
+                'name' => 'partially conformant',
+                'description' => 'Partially conformant means that some parts of the content do not fully conform to the accessibility standard.',
+            ],
+            'non_conformant' => [
+                'name' => 'non conformant',
+                'description' => 'Non conformant means that the content does not conform the accessibility standard.',
+            ],
+            'not_assessed' => [
+                'name' => 'not assessed',
+                'description' => 'Not assessed means that the content has not been evaluated or the evaluation results are not available.',
+            ],
+        ];
 
-            default:
-                return [
-                    'name' => '',
-                    'description' => '',
-                ];
+        $default = [
+            'name' => '',
+            'description' => ''
+        ];
+
+        if(!$status || (!array_key_exists($status, $conformance_details))) {
+            return $default;
         }
+
+        return $conformance_details[$status];
     }
 }
