@@ -85,6 +85,36 @@ class BasicInformation extends AbstractSettingsSection
                 'description' => 'Additional accessibility requirements applied'
             ]),
             new TextField([
+                'id' => 'contact_phone',
+                'label' => 'Feedback Phone Number',
+                'description' => '(Example: “+12 34 567 89 00”)'
+            ]),
+            new TextField([
+                'id' => 'contact_email',
+                'label' => 'Feedback Email Address',
+                'description' => '(Example: “accessibility@example.org”)'
+            ]),
+            new TextField([
+                'id' => 'contact_visitor_address',
+                'label' => 'Feedback Visitor Address',
+                'description' => '(Example: “Main Street 1, 234 Example Ville”)'
+            ]),
+            new TextField([
+                'id' => 'contact_postal_address',
+                'label' => 'Feedback Postal Address',
+                'description' => '(Example: “PO Box 1, 234 Example Ville”)'
+            ]),
+            new TextArea([
+                'id' => 'other_contact_options',
+                'label' => 'Other contact options',
+                'description' => '(Example: on social media; Twitter: @ExampleUser)'
+            ]),
+            new TextField([
+                'id' => 'duration_for_response',
+                'label' => 'Typical duration for response',
+                'description' => '(Example: “2 business days”)'
+            ]),
+            new TextField([
                 'id' => 'date_of_publication',
                 'label' => 'Date of Publication',
                 'default_value' => date('dS F Y'),
