@@ -26,11 +26,6 @@ class AccessibilityStatementGenerator
 
     public function generate()
     {
-        $website_name = get_option('website_name');
-        $organisation = get_option('organisation_name');
-
-
-
         ob_start();
 
         $this->getIntroduction();
