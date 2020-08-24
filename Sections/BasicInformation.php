@@ -80,6 +80,11 @@ class BasicInformation extends AbstractSettingsSection
                 'id' => 'additional_considerations',
                 'label' => 'Additional Accessibility Considerations',
             ]),
+            new TextField([
+                'id' => 'date_of_publication',
+                'label' => 'Date of Publication',
+                'default_value' => date('dS F Y'),
+            ]),
         ];
 
         parent::__construct();

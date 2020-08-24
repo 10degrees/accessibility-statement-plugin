@@ -2,8 +2,6 @@
 
 <p><?php echo $organisation; ?> is commited to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relevant accessibility standards.</p>
 
-<p>This statement was created on <?php echo date('dS F Y'); ?> using the Accessibility Statement Generator Plugin. </p>
-
 <?php if ($status != 'none'): ?>
     <h2>Conformance status </h2>
 
@@ -36,7 +34,11 @@
     <p><?php echo $approval_function; ?></p>
 <?php endif; ?>
 
-<?php if(isset($complaints_procedure) && $complaints_procedure): ?>
+<?php if (isset($complaints_procedure) && $complaints_procedure): ?>
     <h2>Formal complaints</h2>
     <p><?php echo $complaints_procedure; ?></p>
 <?php endif; ?>
+
+<hr>
+
+<p>This statement was created on <?php echo $date_of_publication; ?> using the Accessibility Statement Generator Plugin. </p>

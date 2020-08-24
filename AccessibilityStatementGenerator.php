@@ -54,6 +54,7 @@ class AccessibilityStatementGenerator
             'complaints_procedure' => get_option('formal_complaints_procedure'),
             'approval_function' => get_option('approval_function'),
             'approved_by' => get_option('approval_person_or_department'),
+            'date_of_publication' => get_option('date_of_publication'),
         ]);
     }
 

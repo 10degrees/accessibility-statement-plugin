@@ -24,6 +24,7 @@ abstract class AbstractField
     protected $page_id;
 
     protected $other_args;
+    protected $default_value;
 
     public function __construct($args)
     {
@@ -31,10 +32,12 @@ abstract class AbstractField
             'id' => $id,
             'label' => $label,
             'other' => $other,
+            'default_value' => $default,
         ] = $args;
 
         $this->id = $id;
         $this->label = $label;
+        $this->default_value = $default;
 
         $this->setOtherArgs($other);
 
@@ -68,6 +71,7 @@ abstract class AbstractField
 
         register_setting($this->page_id, $this->id, [
             'sanitize_callback' => [$this, 'sanitize'],
+            'default' => $this->default_value,
         ]);
     }
 
