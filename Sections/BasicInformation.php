@@ -21,6 +21,10 @@ class BasicInformation extends AbstractSettingsSection
                 'id' => 'website_name',
                 'label' => 'Website Name',
             ]),
+            new TextField([
+                'id' => 'website_address',
+                'label' => 'Website Address',
+            ]),
             new RadioButtons([
                 'id' => 'standard_followed',
                 'label' => 'Standard Followed',
