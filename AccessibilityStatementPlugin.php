@@ -4,8 +4,16 @@ require_once 'AccessibilityStatementGenerator.php';
 
 class AccessibilityStatementPlugin
 {
+    private $pages = [];
+
     public function __construct()
     {
+        $this->pages = [
+            new BasicInformation(),
+            new YourEfforts(),
+            new ApprovalAndComplaints(),
+        ];
+
         add_action('admin_menu', [$this, 'addSettingsPage']);
         add_action('admin_post_generate_statement', [$this, 'createPage']);
 
@@ -25,7 +33,9 @@ class AccessibilityStatementPlugin
 
     public function pageContents()
     {
-        include 'settings-page.php';
+        echo td_view('settings-page', [
+            'pages' => $this->pages,
+        ]);
     }
 
     public function createPage()

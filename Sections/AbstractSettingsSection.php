@@ -2,6 +2,10 @@
 
 abstract class AbstractSettingsSection
 {
+    public $id = '';
+    public $title = '';
+    public $fields = [];
+
     public function __construct()
     {
         add_action('admin_init', [$this, 'addSection']);
@@ -45,5 +49,15 @@ abstract class AbstractSettingsSection
     public function render()
     {
         return '';
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

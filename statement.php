@@ -23,7 +23,20 @@
     </ul>
 <?php endif; ?>
 
-<?php if(isset($additional_considerations) && $additional_considerations): ?>
+<?php if (isset($additional_considerations) && $additional_considerations): ?>
     <h2>Additional accessibility considerations</h2>
     <p><?php echo $additional_considerations; ?></p>
+<?php endif; ?>
+
+<?php if (isset($approved_by) && $approved_by): ?>
+    <h2>Formal approval of this accessibility statement</h2>
+
+    <p>This Accessibility Statement is approved by:</p>
+    <p><?php echo $approved_by; ?></p>
+    <p><?php echo $approval_function; ?></p>
+<?php endif; ?>
+
+<?php if(isset($complaints_procedure) && $complaints_procedure): ?>
+    <h2>Formal complaints</h2>
+    <p><?php echo $complaints_procedure; ?></p>
 <?php endif; ?>

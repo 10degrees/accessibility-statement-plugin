@@ -51,6 +51,9 @@ class AccessibilityStatementGenerator
             'status' => $conformance_status,
             'details' => $conformance_details,
             'additional_considerations' => $additional_considerations,
+            'complaints_procedure' => get_option('formal_complaints_procedure'),
+            'approval_function' => get_option('approval_function'),
+            'approved_by' => get_option('approval_person_or_department'),
         ]);
     }
 

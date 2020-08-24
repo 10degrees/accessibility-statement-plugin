@@ -20,10 +20,9 @@ require_once 'AccessibilityStatementPlugin.php';
 require_once 'Sections/AbstractSettingsSection.php';
 require_once 'Sections/BasicInformation.php';
 require_once 'Sections/YourEfforts.php';
+require_once 'Sections/ApprovalAndComplaints.php';
 
 new AccessibilityStatementPlugin();
-new BasicInformation();
-new YourEfforts();
 
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'addSettingsLink');
 
