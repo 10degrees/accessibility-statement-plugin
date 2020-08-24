@@ -1,6 +1,3 @@
-<h1>Accessibilty Statement for <?php echo $website_name; ?></h1>
-
-<p><?php echo $organisation; ?> is commited to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relevant accessibility standards.</p>
 
 <?php if ($status != 'none'): ?>
     <h2>Conformance status </h2>
@@ -8,7 +5,17 @@
     <p>The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. <?php echo $website_name; ?> is <?php echo $details['name']; ?> with <?php echo $standard; ?>. <?php echo $details['description']; ?></p>
 <?php endif; ?>
 
-
+<?php error_log($details['name']); echo td_view("partials/feedback", [
+    'website_name' => $website_name,
+    'contact_details' => [
+        'phone' => get_option('contact_phone'),
+        'email' => get_option('contact_email'),
+        'visitor_address' => get_option('contact_visitor_address'),
+        'postal_address' => get_option('contact_postal_address'),
+        'other' => get_option('other_contact_options')
+    ],
+    'feedback_time' => get_option('duration_for_response'),
+]); ?>
 
 <?php if (isset($measures) && count($measures)) : ?>
     <h2>Measures to support accessibility</h2>
@@ -38,7 +45,3 @@
     <h2>Formal complaints</h2>
     <p><?php echo $complaints_procedure; ?></p>
 <?php endif; ?>
-
-<hr>
-
-<p>This statement was created on <?php echo $date_of_publication; ?> using the Accessibility Statement Generator Plugin. </p>

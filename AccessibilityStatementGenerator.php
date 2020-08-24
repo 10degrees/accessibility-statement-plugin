@@ -43,7 +43,12 @@ class AccessibilityStatementGenerator
 
         $additional_considerations = get_option('additional_considerations');
 
-        return td_view('statement', [
+        $intro = td_view('partials/introduction', [
+            'website_name' => $website_name,
+            'organisation' => $organisation,
+        ]);
+
+        $main = td_view('statement', [
             'website_name' => $website_name,
             'organisation' => $organisation,
             'standard' => $standard,
@@ -54,8 +59,13 @@ class AccessibilityStatementGenerator
             'complaints_procedure' => get_option('formal_complaints_procedure'),
             'approval_function' => get_option('approval_function'),
             'approved_by' => get_option('approval_person_or_department'),
+        ]);
+
+        $footer = td_view('partials/footer', [
             'date_of_publication' => get_option('date_of_publication'),
         ]);
+
+        return $intro . $main . $footer;
     }
 
     public function getConformanceDetails($status)
