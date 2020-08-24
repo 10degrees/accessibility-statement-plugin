@@ -47,6 +47,7 @@ class YourEfforts extends AbstractSettingsSection
                 'id' => 'additional_measures',
                 'label' => 'Additional Measures',
                 'button_label' => 'Add Measure',
+                'description' => '(Example: “Include people with disabilities in our design personas”)'
             ]),
         ];
 

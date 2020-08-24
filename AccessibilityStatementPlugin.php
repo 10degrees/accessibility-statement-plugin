@@ -11,6 +11,7 @@ class AccessibilityStatementPlugin
         $this->pages = [
             new BasicInformation(),
             new YourEfforts(),
+            new TechnicalInformation(),
             new ApprovalAndComplaints(),
         ];
 

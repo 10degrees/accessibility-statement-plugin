@@ -16,14 +16,17 @@ class BasicInformation extends AbstractSettingsSection
             new TextField([
                 'id' => 'organisation_name',
                 'label' => 'Organisation Name',
+                'description' => '(Example: “Example Inc.”)',
             ]),
             new TextField([
                 'id' => 'website_name',
                 'label' => 'Website Name',
+                'description' => '(Example: “https://example.org”)'
             ]),
             new TextField([
                 'id' => 'website_address',
                 'label' => 'Website Address',
+                'description' => '(Example: “Example Store” or “Example App 1.2.3”)'
             ]),
             new RadioButtons([
                 'id' => 'standard_followed',
@@ -79,11 +82,13 @@ class BasicInformation extends AbstractSettingsSection
             new TextArea([
                 'id' => 'additional_considerations',
                 'label' => 'Additional Accessibility Considerations',
+                'description' => 'Additional accessibility requirements applied'
             ]),
             new TextField([
                 'id' => 'date_of_publication',
                 'label' => 'Date of Publication',
                 'default_value' => date('dS F Y'),
+                'description' => 'Publication date of this accessibility statement'
             ]),
         ];
 

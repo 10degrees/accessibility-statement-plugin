@@ -42,13 +42,15 @@ abstract class AbstractField
         [
             'id' => $id,
             'label' => $label,
+            'description' => $description,
             'other' => $other,
-            'default_value' => $default,
+            'default_value' => $default_value,
         ] = $args;
 
         $this->id = $id;
         $this->label = $label;
-        $this->default_value = $default;
+        $this->default_value = $default_value;
+        $this->description = $description;
 
         $this->setOtherArgs($other);
 
@@ -74,7 +76,7 @@ abstract class AbstractField
         add_settings_field(
             $this->id,
             $this->label,
-            [$this, 'render'],
+            [$this, 'renderField'],
             $this->page_id,
             $this->page_id,
             $this->other_args,
@@ -89,5 +91,24 @@ abstract class AbstractField
     public function sanitize($input)
     {
         return $input;
+    }
+
+    public function renderField()
+    {
+        $this->render();
+
+        $this->renderDescription();
+    }
+
+    public function render()
+    {
+        return "";
+    }
+
+    public function renderDescription()
+    {
+        if($this->description){ ?>
+            <p class='description'><?php echo $this->description; ?></p>
+        <?php }
     }
 }

@@ -21,6 +21,7 @@ require_once 'Sections/AbstractSettingsSection.php';
 require_once 'Sections/BasicInformation.php';
 require_once 'Sections/YourEfforts.php';
 require_once 'Sections/ApprovalAndComplaints.php';
+require_once 'Sections/TechnicalInformation.php';
 
 new AccessibilityStatementPlugin();
 

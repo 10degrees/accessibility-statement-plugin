@@ -12,14 +12,17 @@ class ApprovalAndComplaints extends AbstractSettingsSection
             new TextField([
                 'id' => 'approval_person_or_department',
                 'label' => 'Approval person or department',
+                'description' => '(Example: “Communication Department”)'
             ]),
             new TextField([
                 'id' => 'approval_function',
                 'label' => 'Approval Function',
+                'description' => '(Example: “Director of Communication”)'
             ]),
             new TextArea([
                 'id' => 'formal_complaints_procedure',
                 'label' => 'Formal Complaints Procedure',
+                'description' => 'Describe any formal complaints procedures',
             ]),
         ];
 
