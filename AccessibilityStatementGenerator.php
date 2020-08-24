@@ -43,12 +43,12 @@ class AccessibilityStatementGenerator
 
         $additional_considerations = get_option('additional_considerations');
 
-        $intro = td_view('partials/introduction', [
+        $intro = psg_view('partials/introduction', [
             'website_name' => $website_name,
             'organisation' => $organisation,
         ]);
 
-        $main = td_view('statement', [
+        $main = psg_view('statement', [
             'website_name' => $website_name,
             'organisation' => $organisation,
             'standard' => $standard,
@@ -61,7 +61,7 @@ class AccessibilityStatementGenerator
             'approved_by' => get_option('approval_person_or_department'),
         ]);
 
-        $footer = td_view('partials/footer', [
+        $footer = psg_view('partials/footer', [
             'date_of_publication' => get_option('date_of_publication'),
         ]);
 

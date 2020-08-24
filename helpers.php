@@ -9,7 +9,7 @@
  * @param  array  $vars
  * @return string
  */
-function td_view($fileName, $vars = [])
+function psg_view($fileName, $vars = [])
 {
     foreach ($vars as $key => $value) {
         ${$key} = $value;

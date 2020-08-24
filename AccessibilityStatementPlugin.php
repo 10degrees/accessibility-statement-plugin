@@ -34,7 +34,7 @@ class AccessibilityStatementPlugin
 
     public function pageContents()
     {
-        echo td_view('settings-page', [
+        echo psg_view('settings-page', [
             'pages' => $this->pages,
         ]);
     }
