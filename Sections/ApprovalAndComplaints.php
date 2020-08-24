@@ -2,9 +2,9 @@
 
 class ApprovalAndComplaints extends AbstractSettingsSection
 {
-    public $id = 'approval_and_complaints';
-    public $title = 'Approval and complaints process';
-    public $fields = [];
+    protected $id = 'approval_and_complaints';
+    protected $title = 'Approval and complaints process';
+    protected $fields = [];
 
     public function __construct()
     {

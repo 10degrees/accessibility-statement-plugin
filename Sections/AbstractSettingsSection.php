@@ -2,9 +2,9 @@
 
 abstract class AbstractSettingsSection
 {
-    public $id = '';
-    public $title = '';
-    public $fields = [];
+    protected $id = '';
+    protected $title = '';
+    protected $fields = [];
 
     public function __construct()
     {

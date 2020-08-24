@@ -2,8 +2,8 @@
 
 class YourEfforts extends AbstractSettingsSection
 {
-    public $id = 'your_efforts';
-    public $title = 'Your Efforts';
+    protected $id = 'your_efforts';
+    protected $title = 'Your Efforts';
 
     public function __construct()
     {

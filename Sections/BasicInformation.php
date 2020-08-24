@@ -2,9 +2,9 @@
 
 class BasicInformation extends AbstractSettingsSection
 {
-    public $id = 'basic_information';
-    public $title = 'Basic Information';
-    public $fields = [];
+    protected $id = 'basic_information';
+    protected $title = 'Basic Information';
+    protected $fields = [];
 
     public function __construct()
     {

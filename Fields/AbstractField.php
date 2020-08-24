@@ -23,7 +23,18 @@ abstract class AbstractField
      */
     protected $page_id;
 
+    /**
+     * Other arguements to pass to add_settings_field
+     *
+     * @var array
+     */
     protected $other_args;
+
+    /**
+     * Default value of the option
+     *
+     * @var any
+     */
     protected $default_value;
 
     public function __construct($args)
