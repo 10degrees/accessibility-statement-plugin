@@ -95,7 +95,8 @@ class DynamicFields extends AbstractField
      *
      * @return  array             Array of AbstractFields used to display saved values
      */
-    private function getRowsFromSavedValues($template){
+    private function getRowsFromSavedValues($template)
+    {
         $saved_fields = [];
 
         $i = 0;
