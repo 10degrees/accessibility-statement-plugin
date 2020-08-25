@@ -37,8 +37,6 @@ abstract class AbstractField
      */
     protected $default_value;
 
-    protected $field_name;
-
     public function __construct($args)
     {
         [
@@ -67,14 +65,6 @@ abstract class AbstractField
     public function setId($new_id)
     {
         $this->id = $new_id;
-    }
-    
-    public function getFieldName(){
-        return $this->field_name;
-    }
-
-    public function setFieldName($name){
-        $this->field_name = $name;
     }
 
     public function getId()

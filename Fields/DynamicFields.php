@@ -23,14 +23,19 @@ class DynamicFields extends AbstractField
      */
     private $saved_rows = [];
 
+    /**
+     * Original number of fields
+     *
+     * @var int
+     */
+    private $original_number_of_inputs;
+
     public function __construct($args)
     {
         [
             'fields' => $fields,
             'button_label' => $button_label,
         ] = $args;
-
-        $this->fields = $fields;
 
         if ($button_label) {
             $this->button_label = $button_label;
@@ -39,22 +44,40 @@ class DynamicFields extends AbstractField
         parent::__construct($args);
 
         $this->saved_rows = get_option($this->id);
+        $this->fields = $this->getAllInputs($fields);
+        $this->original_number_of_inputs = count($fields);
     }
 
-    /**
-     * Register this field and setup the inner fields
-     *
-     * @return  void
-     */
-    public function register()
+    private function getAllInputs($template)
     {
-        foreach ($this->fields as $field) {
-            $field->addClass($this->id);
+        $all_fields = [];
 
-            $field->setFieldName($field->getId());
+        $i = 0;
+
+        foreach ($this->saved_rows as $row) {
+            foreach ($template as $field) {
+                $clone = clone $field;
+
+                $clone->addClass($this->id);
+                $clone->setId($this->buildFieldID($field, $i));
+
+                $all_fields[] = $clone;
+            }
+            $i++;
+        }
+        
+        if (!count($this->saved_rows)) {
+            foreach ($template as $field) {
+                $clone = clone $field;
+
+                $clone->addClass($this->id);
+                $clone->setId($this->buildFieldID($field, count($this->saved_rows)));
+
+                $all_fields[] = $clone;
+            }
         }
 
-        parent::register();
+        return $all_fields;
     }
 
     /**
@@ -66,13 +89,10 @@ class DynamicFields extends AbstractField
      */
     public function renderInput($value = "")
     {
-        $this->renderSavedValues();
+        $this->renderFields();
         
-        if (!count($this->saved_rows)) {
-            $this->renderBlankInputs();
-        }
         ?>
-        <input type="hidden" class="hidden <?php echo $this->id?>_fields" value="<?php echo count($this->fields); ?>">
+        <input type="hidden" class="hidden <?php echo $this->id?>_fields" value="<?php echo $this->original_number_of_inputs; ?>">
         <button class="button secondary add-dynamic" data-name="<?php echo $this->id; ?>"><?php echo $this->button_label; ?></button>
         <?php
     }
@@ -82,34 +102,28 @@ class DynamicFields extends AbstractField
      *
      * @return  void
      */
-    private function renderSavedValues()
+    private function renderFields()
     {
         $i = 0;
-        foreach ($this->saved_rows as $row) {
-            foreach ($this->fields as $field) { ?>
-                <div class="<?php echo $this->id; ?>">
-                    <?php $field->setID($this->buildFieldID($field, $i)); ?>
-                    <?php $field->renderField($this->saved_rows[$i][$field->getFieldName()]);?>
-                </div>
-            <?php 
+        $row_index = 0;
+        foreach ($this->fields as $field) {
+            $value = "";
+            if (count($this->saved_rows)) {
+                $key_index = $i % $this->original_number_of_inputs;
+                $value = array_values($this->saved_rows[$row_index])[$key_index];
             }
-            $i++;
-        }
-    }
-
-    /**
-     * Render blank inputs to enter data into
-     *
-     * @return  void  
-     */
-    private function renderBlankInputs()
-    {
-        foreach ($this->fields as $field) { ?>
+            ?>
             <div class="<?php echo $this->id; ?>">
-                <?php $field->setID($this->buildFieldID($field, count($this->saved_rows)));?>
-                <?php $field->renderField();?>
+                <?php $field->renderField($value); ?>
             </div>
-        <?php }
+            <?php
+            $i++;
+
+            if (($i % $this->original_number_of_inputs) == 0) {
+                $row_index++;
+            }
+        }
+
     }
 
     /**
@@ -122,7 +136,7 @@ class DynamicFields extends AbstractField
      */
     private function buildFieldID($field, $row_number)
     {
-        return $this->id . '['. $row_number .'][' . $field->getFieldName() . ']';
+        return $this->id . '['. $row_number .'][' . $field->getId() . ']';
     }
 
     /**
