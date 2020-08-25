@@ -46,6 +46,11 @@ class TechnicalInformation extends AbstractSettingsSection
                     ],
                 ],
             ]),
+            new DynamicTextFields([
+                'id' => 'additional_technologies',
+                'label' => 'Additional Technologies',
+                'button_label' => 'Add another technology',
+            ]),
             new Checkboxes([
                 'id' => 'assessment_approach',
                 'label' => 'Assessment approach',
