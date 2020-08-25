@@ -2,11 +2,26 @@
 
 class DynamicFields extends AbstractField
 {
+    /**
+     * Field that can be repeated
+     *
+     * @var array
+     */
     private $fields;
+    
+    /**
+     * Label used on a button to add a new row
+     *
+     * @var string
+     */
     private $button_label = 'Add Section';
     
-    private $current_rows = [];
-
+    /**
+     * The currently saved rows
+     *
+     * @var array
+     */
+    private $saved_rows = [];
 
     public function __construct($args)
     {
@@ -23,9 +38,14 @@ class DynamicFields extends AbstractField
         
         parent::__construct($args);
 
-        $this->current_rows = get_option($this->id);
+        $this->saved_rows = get_option($this->id);
     }
 
+    /**
+     * Register this field and setup the inner fields
+     *
+     * @return  void
+     */
     public function register()
     {
         foreach ($this->fields as $field) {
@@ -37,11 +57,18 @@ class DynamicFields extends AbstractField
         parent::register();
     }
 
+    /**
+     * Render this field
+     *
+     * @param   string  $value  Current Value
+     *
+     * @return  void          
+     */
     public function render($value = "")
     {
         $this->renderSavedValues();
         
-        if (!count($this->current_rows)) {
+        if (!count($this->saved_rows)) {
             $this->renderBlankInputs();
         }
         ?>
@@ -50,14 +77,19 @@ class DynamicFields extends AbstractField
         <?php
     }
 
+    /**
+     * Render inputs containing saved values
+     *
+     * @return  void
+     */
     private function renderSavedValues()
     {
         $i = 0;
-        foreach ($this->current_rows as $row) {
+        foreach ($this->saved_rows as $row) {
             foreach ($this->fields as $field) { ?>
                 <div class="<?php echo $this->id; ?>">
                     <?php $field->setID($this->buildFieldID($field, $i)); ?>
-                    <?php $field->renderField($this->current_rows[$i][$field->getFieldName()]);?>
+                    <?php $field->renderField($this->saved_rows[$i][$field->getFieldName()]);?>
                 </div>
             <?php 
             }
@@ -65,21 +97,41 @@ class DynamicFields extends AbstractField
         }
     }
 
+    /**
+     * Render blank inputs to enter data into
+     *
+     * @return  void  
+     */
     private function renderBlankInputs()
     {
         foreach ($this->fields as $field) { ?>
             <div class="<?php echo $this->id; ?>">
-                <?php $field->setID($this->buildFieldID($field, count($this->current_rows)));?>
+                <?php $field->setID($this->buildFieldID($field, count($this->saved_rows)));?>
                 <?php $field->renderField();?>
             </div>
         <?php }
     }
 
+    /**
+     * Build the ID for a field
+     *
+     * @param   AbstractField  $field       Field
+     * @param   int  $row_number  Row Number
+     *
+     * @return  string               ID for the field
+     */
     private function buildFieldID($field, $row_number)
     {
         return $this->id . '['. $row_number .'][' . $field->getFieldName() . ']';
     }
 
+    /**
+     * Remove any rows that contain fully empty values
+     *
+     * @param   array  $input  Input values
+     *
+     * @return  array          Sanitized input
+     */
     public function sanitize($input)
     {
         $sanitized_input = [];
