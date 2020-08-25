@@ -1,6 +1,11 @@
 <?php
 
-class DynamicFields extends AbstractField
+/**
+ * Repeater
+ * 
+ * Repeat a given number of fields
+ */
+class Repeater extends AbstractField
 {
     /**
      * Field that can be repeated
@@ -120,7 +125,7 @@ class DynamicFields extends AbstractField
      *
      * @param   string  $value  Current Value
      *
-     * @return  void          
+     * @return  void         
      */
     public function renderInput($value = "")
     {
@@ -159,7 +164,6 @@ class DynamicFields extends AbstractField
                 $row_index++;
             }
         }
-
     }
 
     /**

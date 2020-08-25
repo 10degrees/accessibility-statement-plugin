@@ -8,7 +8,7 @@ class AccessibilityLimitations extends AbstractSettingsSection
     public function __construct()
     {
         $this->fields = [
-            new DynamicFields([
+            new Repeater([
                 'id' => 'accessibility_limitation',
                 'label' => 'Accessibility Limitations',
                 'button_label' => 'Add another limitation',
