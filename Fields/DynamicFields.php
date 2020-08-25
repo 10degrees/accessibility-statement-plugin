@@ -44,16 +44,61 @@ class DynamicFields extends AbstractField
         parent::__construct($args);
 
         $this->saved_rows = get_option($this->id);
-        $this->fields = $this->getAllInputs($fields);
+        $this->fields = $this->getFields($fields);
         $this->original_number_of_inputs = count($fields);
     }
 
-    private function getAllInputs($template)
+    /**
+     * Get the fields to display
+     *
+     * @param   array  $template  Array of AbstractFields to use as a template
+     *
+     * @return  array             Array of AbstractFields built from saved values
+     */
+    private function getFields($template)
     {
-        $all_fields = [];
+        $saved_fields = $this->getRowsFromSavedValues($template);
+        
+        $blank_fields = [];
+        if (!count($this->saved_rows)) {
+            $blank_fields = $this->getBlankRow($template);
+        }
+
+        return array_merge($saved_fields, $blank_fields);
+    }
+
+    /**
+     * Get a blank row
+     *
+     * @param   array  $template  Array of AbstractFields to use as a template
+     *
+     * @return  array             Blank row using the provided template
+     */
+    private function getBlankRow($template)
+    {
+        $blank_fields = [];
+        foreach ($template as $field) {
+            $clone = clone $field;
+
+            $clone->addClass($this->id);
+            $clone->setId($this->buildFieldID($field, count($this->saved_rows)));
+
+            $blank_fields[] = $clone;
+        }
+        return $blank_fields;
+    }
+
+    /**
+     * Get rows to use for saved values
+     *
+     * @param   array  $template  Array of AbstractFields to use as a template
+     *
+     * @return  array             Array of AbstractFields used to display saved values
+     */
+    private function getRowsFromSavedValues($template){
+        $saved_fields = [];
 
         $i = 0;
-
         foreach ($this->saved_rows as $row) {
             foreach ($template as $field) {
                 $clone = clone $field;
@@ -61,23 +106,12 @@ class DynamicFields extends AbstractField
                 $clone->addClass($this->id);
                 $clone->setId($this->buildFieldID($field, $i));
 
-                $all_fields[] = $clone;
+                $saved_fields[] = $clone;
             }
             $i++;
         }
-        
-        if (!count($this->saved_rows)) {
-            foreach ($template as $field) {
-                $clone = clone $field;
 
-                $clone->addClass($this->id);
-                $clone->setId($this->buildFieldID($field, count($this->saved_rows)));
-
-                $all_fields[] = $clone;
-            }
-        }
-
-        return $all_fields;
+        return $saved_fields;
     }
 
     /**
@@ -98,7 +132,7 @@ class DynamicFields extends AbstractField
     }
 
     /**
-     * Render inputs containing saved values
+     * Render all fields
      *
      * @return  void
      */
@@ -109,6 +143,7 @@ class DynamicFields extends AbstractField
         foreach ($this->fields as $field) {
             $value = "";
             if (count($this->saved_rows)) {
+                // Get the value for this field
                 $key_index = $i % $this->original_number_of_inputs;
                 $value = array_values($this->saved_rows[$row_index])[$key_index];
             }
