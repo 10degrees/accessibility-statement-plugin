@@ -1,32 +1,60 @@
 class DynamicField
 {
     constructor(btn){
-        let groupName = btn.dataset.name;
+        this.groupName = btn.dataset.name;
 
-        this.numberOfInputs = this.getNumberOfRows(groupName);
+        this.inputsPerRow = parseInt(document.querySelector('.' + this.groupName + '_fields').value);
+        this.numberOfInputs = this.getNumberOfRows();
 
-        this.addButtonListener(btn);
+        this.btn = btn;
+
+        this.addButtonListener();
     }
 
-    addButtonListener(btn)
+    addButtonListener()
     {
-        btn.addEventListener('click', (e) => this.addRow(e));
+        this.btn.addEventListener('click', (e) => this.addRow(e));
     }
 
-    getNumberOfRows(name)
+    getNumberOfRows()
     {
-        let totalInputs = document.querySelectorAll('.' + name).length;
-        let inputsPerRow = document.querySelector('.' + name + '_fields').value;
-
-        inputsPerRow = parseInt(inputsPerRow);
+        let totalInputs = document.querySelectorAll('.' + this.groupName).length;
         
-        return totalInputs / inputsPerRow;
+        return totalInputs / this.inputsPerRow;
     }
 
     addRow(e){
         e.preventDefault();
 
-        
+        let allInputs = [...document.querySelectorAll('.' + this.groupName)];
+        let toClone = allInputs.slice(0, this.inputsPerRow);
+
+        toClone.forEach(ele => {
+            let clone = ele.cloneNode(true);
+
+            let textInput = clone.querySelector('input[type="text"]');
+
+            if(textInput){
+                textInput.value = "";
+
+                let id = textInput.id;
+                
+                let baseId = id.replace(/ *\[[^\]]*]/,'');
+                let inputName = baseId.match(/\[(.*?)\]/);
+
+                baseId = baseId.replace(/ *\[[^\]]*]/,'');
+
+                if(inputName.length){
+                    textInput.id = baseId +  "[" + this.numberOfInputs + "][" + inputName[1] + "]" ;
+                    textInput.name = baseId +  "[" + this.numberOfInputs + "][" + inputName[1] + "]";
+                }
+
+            }
+
+            this.btn.parentNode.insertBefore(clone, this.btn);
+            
+        });
+        this.numberOfInputs++;
     }
 }
 

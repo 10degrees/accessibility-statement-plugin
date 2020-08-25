@@ -87,23 +87,6 @@ class TechnicalInformation extends AbstractSettingsSection
                 'button_label' => 'Add another related evidence',
                 'description' => '(Example: “https://example.org/accessibility-evaulation-certificate”)',
             ]),
-            new DynamicFields([
-                'id' => 'accessibility_limitation',
-                'title' => 'Accessibility Limitations',
-                'button_label' => 'Add another limitation',
-                'fields' => [
-                    new TextField([
-                        'id' => 'content_part',
-                        'label' => 'Content part',
-                        'description' => '(Example: “Comments from users”)',
-                    ]),
-                    new TextField([
-                        'id' => 'description',
-                        'label' => 'Description of the issue',
-                        'description' => '(Example: “Uploaded images may not have text alternatives”)',
-                    ]),
-                ],
-            ]),
         ];
 
         parent::__construct();

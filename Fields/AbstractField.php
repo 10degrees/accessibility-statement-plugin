@@ -37,11 +37,14 @@ abstract class AbstractField
      */
     protected $default_value;
 
+    protected $field_name;
+
     public function __construct($args)
     {
         [
             'id' => $id,
             'label' => $label,
+            'top_label' => $top_label,
             'description' => $description,
             'other' => $other,
             'default_value' => $default_value,
@@ -51,6 +54,7 @@ abstract class AbstractField
         $this->label = $label;
         $this->default_value = $default_value;
         $this->description = $description;
+        $this->top_label = $top_label;
 
         $this->setOtherArgs($other);
     }
@@ -63,6 +67,14 @@ abstract class AbstractField
     public function setId($new_id)
     {
         $this->id = $new_id;
+    }
+    
+    public function getFieldName(){
+        return $this->field_name;
+    }
+
+    public function setFieldName($name){
+        $this->field_name = $name;
     }
 
     public function getId()
@@ -106,16 +118,27 @@ abstract class AbstractField
         return $input;
     }
 
-    public function renderField()
+    public function renderField($value = "")
     {
-        $this->render();
+        $this->renderTopLabel();
+
+        $this->render($value);
 
         $this->renderDescription();
     }
 
-    public function render()
+    public function render($value = "")
     {
         return '';
+    }
+
+    public function renderTopLabel()
+    {
+        if ($this->top_label) { ?>
+            <div>
+                <strong><label for="<?php echo $this->id; ?>"><?php echo $this->top_label; ?></label></strong>
+            </div>
+        <?php }
     }
 
     public function renderDescription()
