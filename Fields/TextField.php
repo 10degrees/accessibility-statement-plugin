@@ -5,10 +5,10 @@
  */
 class TextField extends AbstractField
 {
-    public function render($value = "")
+    public function renderInput($value = null)
     {
         $rendered_value = get_option($this->id);
-        if($value){
+        if ($value) {
             $rendered_value = $value;
         }
 

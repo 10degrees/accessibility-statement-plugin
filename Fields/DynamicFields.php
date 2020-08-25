@@ -64,7 +64,7 @@ class DynamicFields extends AbstractField
      *
      * @return  void          
      */
-    public function render($value = "")
+    public function renderInput($value = "")
     {
         $this->renderSavedValues();
         

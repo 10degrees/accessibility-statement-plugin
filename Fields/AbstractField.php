@@ -118,16 +118,16 @@ abstract class AbstractField
         return $input;
     }
 
-    public function renderField($value = "")
+    public function renderField($value = null)
     {
         $this->renderTopLabel();
 
-        $this->render($value);
+        $this->renderInput($value);
 
         $this->renderDescription();
     }
 
-    public function render($value = "")
+    public function renderInput($value = null)
     {
         return '';
     }
