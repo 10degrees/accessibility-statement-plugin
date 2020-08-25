@@ -22,16 +22,13 @@ class DynamicFields extends AbstractField
         }
         
         parent::__construct($args);
-        
+
         $this->current_rows = get_option($this->id);
     }
 
     public function register()
     {
         foreach ($this->fields as $field) {
-            $field->setPage($this->page_id);
-
-            $field->addClass('dynamic');
             $field->addClass($this->id);
 
             $field->setFieldName($field->getId());
@@ -42,9 +39,9 @@ class DynamicFields extends AbstractField
 
     public function render($value = "")
     {
-        $this->renderSavedValues(); 
+        $this->renderSavedValues();
         
-        if(!count($this->current_rows)){
+        if (!count($this->current_rows)) {
             $this->renderBlankInputs();
         }
         ?>
@@ -59,7 +56,7 @@ class DynamicFields extends AbstractField
         foreach ($this->current_rows as $row) {
             foreach ($this->fields as $field) { ?>
                 <div class="<?php echo $this->id; ?>">
-                    <?php $field->setID($this->id . '['. $i .'][' . $field->getFieldName() . ']'); ?>
+                    <?php $field->setID($this->buildFieldID($field, $i)); ?>
                     <?php $field->renderField($this->current_rows[$i][$field->getFieldName()]);?>
                 </div>
             <?php 
@@ -72,10 +69,15 @@ class DynamicFields extends AbstractField
     {
         foreach ($this->fields as $field) { ?>
             <div class="<?php echo $this->id; ?>">
-                <?php $field->setID($this->id . '['. count($this->current_rows) .'][' . $field->getFieldName() . ']');?>
+                <?php $field->setID($this->buildFieldID($field, count($this->current_rows)));?>
                 <?php $field->renderField();?>
             </div>
         <?php }
+    }
+
+    private function buildFieldID($field, $row_number)
+    {
+        return $this->id . '['. $row_number .'][' . $field->getFieldName() . ']';
     }
 
     public function sanitize($input)

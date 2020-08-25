@@ -1,12 +1,11 @@
 class DynamicField
 {
     constructor(btn){
-        this.groupName = btn.dataset.name;
-
-        this.inputsPerRow = parseInt(document.querySelector('.' + this.groupName + '_fields').value);
-        this.numberOfInputs = this.getNumberOfRows();
-
         this.btn = btn;
+        this.fieldName = btn.dataset.name;
+
+        this.inputsPerRow = parseInt(document.querySelector('.' + this.fieldName + '_fields').value);
+        this.numberOfRows = this.getNumberOfRows();
 
         this.addButtonListener();
     }
@@ -18,7 +17,7 @@ class DynamicField
 
     getNumberOfRows()
     {
-        let totalInputs = document.querySelectorAll('.' + this.groupName).length;
+        let totalInputs = document.querySelectorAll('.' + this.fieldName).length;
         
         return totalInputs / this.inputsPerRow;
     }
@@ -26,35 +25,26 @@ class DynamicField
     addRow(e){
         e.preventDefault();
 
-        let allInputs = [...document.querySelectorAll('.' + this.groupName)];
-        let toClone = allInputs.slice(0, this.inputsPerRow);
+        let allInputs = [...document.querySelectorAll('.' + this.fieldName)];
+        let singleRow = allInputs.slice(0, this.inputsPerRow);
 
-        toClone.forEach(ele => {
-            let clone = ele.cloneNode(true);
-
-            let textInput = clone.querySelector('input[type="text"]');
+        singleRow.forEach(field => {
+            let clonedField = field.cloneNode(true);
+            let textInput = clonedField.querySelector('input[type="text"]');
 
             if(textInput){
                 textInput.value = "";
 
-                let id = textInput.id;
-                
-                let baseId = id.replace(/ *\[[^\]]*]/,'');
-                let inputName = baseId.match(/\[(.*?)\]/);
+                let newId = textInput.id.replace(/\d+/, () => this.numberOfRows); // Replace digit with this.numberOfRows
 
-                baseId = baseId.replace(/ *\[[^\]]*]/,'');
-
-                if(inputName.length){
-                    textInput.id = baseId +  "[" + this.numberOfInputs + "][" + inputName[1] + "]" ;
-                    textInput.name = baseId +  "[" + this.numberOfInputs + "][" + inputName[1] + "]";
-                }
-
+                textInput.id = newId;
+                textInput.name = newId;
             }
 
-            this.btn.parentNode.insertBefore(clone, this.btn);
+            this.btn.parentNode.insertBefore(clonedField, this.btn);
             
         });
-        this.numberOfInputs++;
+        this.numberOfRows++;
     }
 }
 
