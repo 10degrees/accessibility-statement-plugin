@@ -53,8 +53,21 @@ abstract class AbstractField
         $this->description = $description;
 
         $this->setOtherArgs($other);
+    }
 
-        add_filter('admin_init', [$this, 'register']);
+    public function addClass($class)
+    {
+        $this->other_args['class'] .= $class . ' ';
+    }
+
+    public function setId($new_id)
+    {
+        $this->id = $new_id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function setOtherArgs($other_args)
@@ -102,12 +115,12 @@ abstract class AbstractField
 
     public function render()
     {
-        return "";
+        return '';
     }
 
     public function renderDescription()
     {
-        if($this->description){ ?>
+        if ($this->description) { ?>
             <p class='description'><?php echo $this->description; ?></p>
         <?php }
     }

@@ -15,6 +15,7 @@ require_once 'Fields/RadioButtons.php';
 require_once 'Fields/Checkboxes.php';
 require_once 'Fields/TextArea.php';
 require_once 'Fields/DynamicTextFields.php';
+require_once 'Fields/DynamicFields.php';
 
 require_once 'AccessibilityStatementPlugin.php';
 require_once 'Sections/AbstractSettingsSection.php';
