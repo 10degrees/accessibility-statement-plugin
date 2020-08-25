@@ -4,6 +4,9 @@ class DynamicFields extends AbstractField
 {
     private $fields;
     private $button_label = 'Add Section';
+    
+    private $current_rows = [];
+
 
     public function __construct($args)
     {
@@ -13,16 +16,18 @@ class DynamicFields extends AbstractField
         ] = $args;
 
         $this->fields = $fields;
+
         if ($button_label) {
             $this->button_label = $button_label;
         }
-
+        
         parent::__construct($args);
+        
+        $this->current_rows = get_option($this->id);
     }
 
     public function register()
     {
-
         foreach ($this->fields as $field) {
             $field->setPage($this->page_id);
 
@@ -37,10 +42,9 @@ class DynamicFields extends AbstractField
 
     public function render($value = "")
     {
-        $current_rows = get_option($this->id);
         $this->renderSavedValues(); 
         
-        if(!count($current_rows)){
+        if(!count($this->current_rows)){
             $this->renderBlankInputs();
         }
         ?>
@@ -51,14 +55,12 @@ class DynamicFields extends AbstractField
 
     private function renderSavedValues()
     {
-        $current_rows = get_option($this->id);
-
         $i = 0;
-        foreach ($current_rows as $row) {
+        foreach ($this->current_rows as $row) {
             foreach ($this->fields as $field) { ?>
                 <div class="<?php echo $this->id; ?>">
                     <?php $field->setID($this->id . '['. $i .'][' . $field->getFieldName() . ']'); ?>
-                    <?php $field->renderField($current_rows[$i][$field->getFieldName()]);?>
+                    <?php $field->renderField($this->current_rows[$i][$field->getFieldName()]);?>
                 </div>
             <?php 
             }
@@ -68,10 +70,9 @@ class DynamicFields extends AbstractField
 
     private function renderBlankInputs()
     {
-        $current_rows = get_option($this->id);
         foreach ($this->fields as $field) { ?>
             <div class="<?php echo $this->id; ?>">
-                <?php $field->setID($this->id . '['. count($current_rows) .'][' . $field->getFieldName() . ']');?>
+                <?php $field->setID($this->id . '['. count($this->current_rows) .'][' . $field->getFieldName() . ']');?>
                 <?php $field->renderField();?>
             </div>
         <?php }
@@ -81,8 +82,8 @@ class DynamicFields extends AbstractField
     {
         $sanitized_input = [];
 
-        foreach($input as $row){
-            if(array_filter($row)){
+        foreach ($input as $row) {
+            if (array_filter($row)) {
                 $sanitized_input[] = $row;
             }
         }
