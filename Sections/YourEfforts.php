@@ -3,51 +3,51 @@
 class YourEfforts extends AbstractSettingsSection
 {
     protected $id = 'your_efforts';
-    protected $title = 'Your Efforts';
 
     public function __construct()
     {
+        $this->title = __('Your Efforts', 'a11y-statement');
+
         $this->fields = [
             new Checkboxes([
                 'id' => 'measures',
-                'label' => 'Organizational measures',
+                'label' => __('Organizational measures', 'a11y-statement'),
                 'options' => [
                     [
-                        'label' => 'Include accessibility as part of our mission statement.',
-                        'value' => 'Include accessibility as part of our mission statement.',
+                        'label' => __('Include accessibility as part of our mission statement.', 'a11y-statement'),
+                        'value' => __('Include accessibility as part of our mission statement.', 'a11y-statement'),
                     ],
                     [
-                        'label' => 'Include accessibility throughout our internal policies.',
-                        'value' => 'Include accessibility throughout our internal policies.',
+                        'label' => __('Include accessibility throughout our internal policies.', 'a11y-statement'),
+                        'value' => __('Include accessibility throughout our internal policies.', 'a11y-statement'),
                     ],
                     [
-                        'label' => '
-                        Integrate accessibility into our procurement practices.',
-                        'value' => 'Integrate accessibility into our procurement practices.',
+                        'label' => __('Integrate accessibility into our procurement practices.', 'a11y-statement'),
+                        'value' => __('Integrate accessibility into our procurement practices.', 'a11y-statement'),
                     ],
                     [
-                        'label' => 'Appoint an accessibility officer and/or ombudsperson.',
-                        'value' => 'Appoint an accessibility officer and/or ombudsperson.',
+                        'label' => __('Appoint an accessibility officer and/or ombudsperson.', 'a11y-statement'),
+                        'value' => __('Appoint an accessibility officer and/or ombudsperson.', 'a11y-statement'),
                     ],
                     [
-                        'label' => 'Provide continual accessibility training for our staff.',
-                        'value' => 'Provide continual accessibility training for our staff.',
+                        'label' => __('Provide continual accessibility training for our staff.', 'a11y-statement'),
+                        'value' => __('Provide continual accessibility training for our staff.', 'a11y-statement'),
                     ],
                     [
-                        'label' => 'Assign clear accessibility targets and responsibilities.',
-                        'value' => 'Assign clear accessibility targets and responsibilities.',
+                        'label' => __('Assign clear accessibility targets and responsibilities.', 'a11y-statement'),
+                        'value' => __('Assign clear accessibility targets and responsibilities.', 'a11y-statement'),
                     ],
                     [
-                        'label' => 'Employ formal accessibility quality assurance methods.',
-                        'value' => 'Employ formal accessibility quality assurance methods.',
+                        'label' => __('Employ formal accessibility quality assurance methods.', 'a11y-statement'),
+                        'value' => __('Employ formal accessibility quality assurance methods.', 'a11y-statement'),
                     ],
                 ],
             ]),
             new DynamicTextFields([
                 'id' => 'additional_measures',
-                'label' => 'Additional Measures',
-                'button_label' => 'Add Measure',
-                'description' => '(Example: “Include people with disabilities in our design personas”)'
+                'label' => __('Additional Measures', 'a11y-statement'),
+                'button_label' => __('Add Measure', 'a11y-statement'),
+                'description' => __('(Example: “Include people with disabilities in our design personas”)', 'a11y-statement')
             ]),
         ];
 

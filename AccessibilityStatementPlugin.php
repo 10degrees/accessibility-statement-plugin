@@ -29,7 +29,7 @@ class AccessibilityStatementPlugin
 
     public function addSettingsPage()
     {
-        add_submenu_page('options-general.php', 'Accessibility Statement', 'Accessibility', 'manage_options', 'accessibility-statement', [$this, 'pageContents']);
+        add_submenu_page('options-general.php', __('Accessibility Statement', 'a11y-statement'), __('Accessibility', 'a11y-statement'), 'manage_options', 'accessibility-statement', [$this, 'pageContents']);
     }
 
     public function pageContents()
