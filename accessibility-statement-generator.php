@@ -31,7 +31,7 @@ function addSettingsLink($links)
 {
     $links[] = '<a href="' .
         admin_url('options-general.php?page=accessibility-statement') .
-        '">' . __('Settings') . '</a>';
+        '">' . __('Settings', 'a11y-statement') . '</a>';
     return $links;
 }
 

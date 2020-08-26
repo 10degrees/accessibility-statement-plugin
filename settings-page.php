@@ -3,7 +3,7 @@
 $active_tab = isset($_GET['tab']) ? $_GET['tab'] : $pages[0]->getId();  ?>  
 
 <div class="wrap">
-    <h1><?php _e('Accessibility Statement'); ?></h1>
+    <h1><?php _e('Accessibility Statement', 'a11y-statement')); ?></h1>
 
     <h2 class="nav-tab-wrapper">
         <?php foreach ($pages as $page): ?>
@@ -21,6 +21,6 @@ $active_tab = isset($_GET['tab']) ? $_GET['tab'] : $pages[0]->getId();  ?>
 
     <form action="<?php echo admin_url('admin-post.php'); ?>" method="POST">
         <input type="hidden" name="action" value="generate_statement">
-        <?php submit_button('Generate Statement', 'secondary'); ?>
+        <?php submit_button(__'Generate Statement', 'a11y-statement'), 'secondary'); ?>
     </form>
 </div>
