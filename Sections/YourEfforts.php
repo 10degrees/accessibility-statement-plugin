@@ -3,10 +3,11 @@
 class YourEfforts extends AbstractSettingsSection
 {
     protected $id = 'your_efforts';
-    protected $title = __('Your Efforts', 'a11y-statement');
 
     public function __construct()
     {
+        $this->title = __('Your Efforts', 'a11y-statement');
+
         $this->fields = [
             new Checkboxes([
                 'id' => 'measures',

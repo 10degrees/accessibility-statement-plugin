@@ -3,11 +3,12 @@
 class BasicInformation extends AbstractSettingsSection
 {
     protected $id = 'basic_information';
-    protected $title = __('Basic Information', 'a11y-statement');
     protected $fields = [];
 
     public function __construct()
     {
+        $this->title = __('Basic Information', 'a11y-statement');
+        
         $this->fields = [
             new TextField([
                 'id' => 'page_title',

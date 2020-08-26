@@ -3,11 +3,12 @@
 class ApprovalAndComplaints extends AbstractSettingsSection
 {
     protected $id = 'approval_and_complaints';
-    protected $title = __('Approval and complaints process', 'a11y-statement');
     protected $fields = [];
 
     public function __construct()
     {
+        $this->title = __('Approval and complaints process', 'a11y-statement');
+
         $this->fields = [
             new TextField([
                 'id' => 'approval_person_or_department',
