@@ -18,7 +18,7 @@ class DynamicTextFields extends AbstractField
         parent::__construct($args);
     }
 
-    public function render()
+    public function renderInput($value = null)
     {
         $existing_values = get_option($this->id);
         if (!$existing_values) {
@@ -36,7 +36,7 @@ class DynamicTextFields extends AbstractField
         endforeach;
 
         if (count($existing_values) == 0):?>
-            <input type="text" name="<?php echo $this->id; ?>[0]" value="<?php echo $value; ?>" class="regular-text"/>
+            <input type="text" name="<?php echo $this->id; ?>[0]" class="regular-text"/>
         <?php endif; ?>
         </div>
         <button class="button addTextField" data-name="<?php echo $this->id; ?>"><?php echo $this->button_label; ?></button>

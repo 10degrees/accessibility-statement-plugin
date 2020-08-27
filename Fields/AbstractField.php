@@ -42,6 +42,7 @@ abstract class AbstractField
         [
             'id' => $id,
             'label' => $label,
+            'top_label' => $top_label,
             'description' => $description,
             'other' => $other,
             'default_value' => $default_value,
@@ -51,10 +52,24 @@ abstract class AbstractField
         $this->label = $label;
         $this->default_value = $default_value;
         $this->description = $description;
+        $this->top_label = $top_label;
 
         $this->setOtherArgs($other);
+    }
 
-        add_filter('admin_init', [$this, 'register']);
+    public function addClass($class)
+    {
+        $this->other_args['class'] .= $class . ' ';
+    }
+
+    public function setId($new_id)
+    {
+        $this->id = $new_id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function setOtherArgs($other_args)
@@ -93,21 +108,32 @@ abstract class AbstractField
         return $input;
     }
 
-    public function renderField()
+    public function renderField($value = null)
     {
-        $this->render();
+        $this->renderTopLabel();
+
+        $this->renderInput($value);
 
         $this->renderDescription();
     }
 
-    public function render()
+    public function renderInput($value = null)
     {
-        return "";
+        return '';
+    }
+
+    public function renderTopLabel()
+    {
+        if ($this->top_label) { ?>
+            <div>
+                <strong><label for="<?php echo $this->id; ?>"><?php echo $this->top_label; ?></label></strong>
+            </div>
+        <?php }
     }
 
     public function renderDescription()
     {
-        if($this->description){ ?>
+        if ($this->description) { ?>
             <p class='description'><?php echo $this->description; ?></p>
         <?php }
     }

@@ -12,6 +12,7 @@ class AccessibilityStatementPlugin
             new BasicInformation(),
             new YourEfforts(),
             new TechnicalInformation(),
+            new AccessibilityLimitations(),
             new ApprovalAndComplaints(),
         ];
 

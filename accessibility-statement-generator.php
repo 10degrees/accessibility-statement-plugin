@@ -15,6 +15,7 @@ require_once 'Fields/RadioButtons.php';
 require_once 'Fields/Checkboxes.php';
 require_once 'Fields/TextArea.php';
 require_once 'Fields/DynamicTextFields.php';
+require_once 'Fields/Repeater.php';
 
 require_once 'AccessibilityStatementPlugin.php';
 require_once 'Sections/AbstractSettingsSection.php';
@@ -22,6 +23,7 @@ require_once 'Sections/BasicInformation.php';
 require_once 'Sections/YourEfforts.php';
 require_once 'Sections/ApprovalAndComplaints.php';
 require_once 'Sections/TechnicalInformation.php';
+require_once 'Sections/AccessibilityLimitations.php';
 
 new AccessibilityStatementPlugin();
 
