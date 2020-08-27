@@ -25,8 +25,7 @@ class RadioButtons extends AbstractField
                     <?php echo $option['label']; ?>
                 </label>
                 <br>
-                <?php
-            } ?>
+            <?php } ?>
         </fieldset>
         <?php
     }
