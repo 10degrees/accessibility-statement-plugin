@@ -3,26 +3,27 @@
 class ApprovalAndComplaints extends AbstractSettingsSection
 {
     protected $id = 'approval_and_complaints';
-    protected $title = 'Approval and complaints process';
     protected $fields = [];
 
     public function __construct()
     {
+        $this->title = __('Approval and complaints process', 'a11y-statement');
+
         $this->fields = [
             new TextField([
                 'id' => 'approval_person_or_department',
-                'label' => 'Approval person or department',
-                'description' => '(Example: “Communication Department”)'
+                'label' => __('Approval person or department', 'a11y-statement'),
+                'description' => __('(Example: “Communication Department”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'approval_function',
-                'label' => 'Approval Function',
-                'description' => '(Example: “Director of Communication”)'
+                'label' => __('Approval Function', 'a11y-statement'),
+                'description' => __('(Example: “Director of Communication”)', 'a11y-statement')
             ]),
             new TextArea([
                 'id' => 'formal_complaints_procedure',
-                'label' => 'Formal Complaints Procedure',
-                'description' => 'Describe any formal complaints procedures',
+                'label' => __('Formal Complaints Procedure', 'a11y-statement'),
+                'description' => __('Describe any formal complaints procedures', 'a11y-statement'),
             ]),
         ];
 
@@ -31,6 +32,8 @@ class ApprovalAndComplaints extends AbstractSettingsSection
 
     public function render()
     {
-        echo '<p>In this section you can add information about the formal approval of this accessibility statement and, if applicable, any complaints escalation procedure.</p>';
+        echo '<p>';
+        _e('In this section you can add information about the formal approval of this accessibility statement and, if applicable, any complaints escalation procedure.', 'a11y-statement');
+        echo '</p>';
     }
 }

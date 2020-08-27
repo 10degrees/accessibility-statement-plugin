@@ -139,19 +139,19 @@ class AccessibilityStatementGenerator
         $conformance_details = [
             'fully' => [
                 'name' => 'fully conformant',
-                'description' => 'Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.',
+                'description' => __('Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.', 'a11y-statement'),
             ],
             'partially' => [
                 'name' => 'partially conformant',
-                'description' => 'Partially conformant means that some parts of the content do not fully conform to the accessibility standard.',
+                'description' => __('Partially conformant means that some parts of the content do not fully conform to the accessibility standard.', 'a11y-statement'),
             ],
             'non_conformant' => [
                 'name' => 'non conformant',
-                'description' => 'Non conformant means that the content does not conform the accessibility standard.',
+                'description' => __('Non conformant means that the content does not conform the accessibility standard.', 'a11y-statement'),
             ],
             'not_assessed' => [
                 'name' => 'not assessed',
-                'description' => 'Not assessed means that the content has not been evaluated or the evaluation results are not available.',
+                'description' => __('Not assessed means that the content has not been evaluated or the evaluation results are not available.', 'a11y-statement'),
             ],
         ];
 

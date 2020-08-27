@@ -3,122 +3,123 @@
 class BasicInformation extends AbstractSettingsSection
 {
     protected $id = 'basic_information';
-    protected $title = 'Basic Information';
     protected $fields = [];
 
     public function __construct()
     {
+        $this->title = __('Basic Information', 'a11y-statement');
+        
         $this->fields = [
             new TextField([
                 'id' => 'page_title',
-                'label' => 'Page Title',
+                'label' => __('Page Title', 'a11y-statement'),
             ]),
             new TextField([
                 'id' => 'organisation_name',
-                'label' => 'Organisation Name',
-                'description' => '(Example: “Example Inc.”)',
+                'label' => __('Organisation Name', 'a11y-statement'),
+                'description' => __('(Example: “Example Inc.”)', 'a11y-statement'),
             ]),
             new TextField([
                 'id' => 'website_name',
-                'label' => 'Website Name',
-                'description' => '(Example: “https://example.org”)'
+                'label' => __('Website Name', 'a11y-statement'),
+                'description' => __('(Example: “https://example.org”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'website_address',
-                'label' => 'Website Address',
-                'description' => '(Example: “Example Store” or “Example App 1.2.3”)'
+                'label' => __('Website Address', 'a11y-statement'),
+                'description' => __('(Example: “Example Store” or “Example App 1.2.3”)', 'a11y-statement')
             ]),
             new RadioButtons([
                 'id' => 'standard_followed',
-                'label' => 'Standard Followed',
+                'label' => __('Standard Followed', 'a11y-statement'),
                 'options' => [
                     [
-                        'label' => 'WCAG 2.1 level AA',
-                        'value' => 'WCAG 2.1 level AA',
+                        'label' => __('WCAG 2.1 level AA', 'a11y-statement'),
+                        'value' => 'WCAG 2.1 level AA'
                     ],
                     [
-                        'label' => 'WCAG 2.0 level AA',
-                        'value' => 'WCAG 2.0 level AA',
+                        'label' => __('WCAG 2.0 level AA', 'a11y-statement'),
+                        'value' => 'WCAG 2.0 level AA'
                     ],
                     [
-                        'label' => 'Other',
-                        'value' => 'other',
+                        'label' => __('Other', 'a11y-statement'),
+                        'value' => 'other'
                     ],
                 ],
             ]),
             new TextField([
                 'id' => 'other_standard',
-                'label' => 'Enter Standard',
+                'label' => __('Enter Standard', 'a11y-statement'),
                 'other' => [
                     'class' => 'hidden',
                 ],
             ]),
             new RadioButtons([
                 'id' => 'conformance_status',
-                'label' => 'Conformance Status',
+                'label' => __('Conformance Status', 'a11y-statement'),
                 'options' => [
                     [
-                        'label' => 'Fully conformant: the content fully conforms to the accessibility standard without any exceptions ',
+                        'label' => __('Fully conformant: the content fully conforms to the accessibility standard without any exceptions ', 'a11y-statement'),
                         'value' => 'fully',
                     ],
                     [
-                        'label' => 'Partially conformant: some parts of the content do not fully conform to the accessibility standard (you can indicate these parts in later sections of this form)',
+                        'label' => __('Partially conformant: some parts of the content do not fully conform to the accessibility standard (you can indicate these parts in later sections of this form)', 'a11y-statement'),
                         'value' => 'partially',
                     ],
                     [
-                        'label' => 'Non conformant: the content does not conform the accessibility standard ',
+                        'label' => __('Non conformant: the content does not conform the accessibility standard ', 'a11y-statement'),
                         'value' => 'non_conformant',
                     ],
                     [
-                        'label' => 'Not assessed: the content has not been evaluated or the evaluation results are not available',
+                        'label' => __('Not assessed: the content has not been evaluated or the evaluation results are not available', 'a11y-statement'),
                         'value' => 'not_assessed',
                     ],
                     [
-                        'label' => 'None',
+                        'label' => __('None', 'a11y-statement'),
                         'value' => 'none',
                     ],
                 ],
             ]),
             new TextArea([
                 'id' => 'additional_considerations',
-                'label' => 'Additional Accessibility Considerations',
-                'description' => 'Additional accessibility requirements applied'
+                'label' => __('Additional Accessibility Considerations', 'a11y-statement'),
+                'description' => __('Additional accessibility requirements applied', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'contact_phone',
-                'label' => 'Feedback Phone Number',
-                'description' => '(Example: “+12 34 567 89 00”)'
+                'label' => __('Feedback Phone Number', 'a11y-statement'),
+                'description' => __('(Example: “+12 34 567 89 00”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'contact_email',
-                'label' => 'Feedback Email Address',
-                'description' => '(Example: “accessibility@example.org”)'
+                'label' => __('Feedback Email Address', 'a11y-statement'),
+                'description' => __('(Example: “accessibility@example.org”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'contact_visitor_address',
-                'label' => 'Feedback Visitor Address',
-                'description' => '(Example: “Main Street 1, 234 Example Ville”)'
+                'label' => __('Feedback Visitor Address', 'a11y-statement'),
+                'description' => __('(Example: “Main Street 1, 234 Example Ville”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'contact_postal_address',
-                'label' => 'Feedback Postal Address',
-                'description' => '(Example: “PO Box 1, 234 Example Ville”)'
+                'label' => __('Feedback Postal Address', 'a11y-statement'),
+                'description' => __('(Example: “PO Box 1, 234 Example Ville”)', 'a11y-statement')
             ]),
             new TextArea([
                 'id' => 'other_contact_options',
-                'label' => 'Other contact options',
-                'description' => '(Example: on social media; Twitter: @ExampleUser)'
+                'label' => __('Other contact options', 'a11y-statement'),
+                'description' => __('(Example: on social media; Twitter: @ExampleUser)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'duration_for_response',
-                'label' => 'Typical duration for response',
-                'description' => '(Example: “2 business days”)'
+                'label' => __('Typical duration for response', 'a11y-statement'),
+                'description' => __('(Example: “2 business days”)', 'a11y-statement')
             ]),
             new TextField([
                 'id' => 'date_of_publication',
-                'label' => 'Date of Publication',
+                'label' => __('Date of Publication', 'a11y-statement'),
                 'default_value' => date('dS F Y'),
-                'description' => 'Publication date of this accessibility statement'
+                'description' => __('Publication date of this accessibility statement', 'a11y-statement')
             ]),
         ];
 
@@ -127,6 +128,8 @@ class BasicInformation extends AbstractSettingsSection
 
     public function render()
     {
-        echo '<p>In this section you can provide the minimal set of information recommended for your accessibility statement. This includes information about your organization, the accessibility standards you applied, and your contact information for feedback.</p>';
+        echo '<p>';
+        _e('In this section you can provide the minimal set of information recommended for your accessibility statement. This includes information about your organization, the accessibility standards you applied, and your contact information for feedback.', 'a11y-statement');
+        echo '</p>';
     }
 }
