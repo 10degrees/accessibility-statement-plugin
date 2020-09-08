@@ -9,7 +9,7 @@
 
 require_once 'helpers.php';
 require_once 'Fields/class-abstract-field.php';
-require_once 'Fields/TextField.php';
+require_once 'Fields/class-textfield.php';
 require_once 'Fields/RadioButtons.php';
 require_once 'Fields/class-checkboxes.php';
 require_once 'Fields/TextArea.php';
