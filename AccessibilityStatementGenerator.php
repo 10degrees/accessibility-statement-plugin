@@ -42,6 +42,8 @@ class AccessibilityStatementGenerator
 
         $this->getAssessmentApproaches();
 
+        $this->getEvidence();
+
         $this->getAdditionalConsiderations();
 
         $this->getApprovalStatement();
@@ -100,6 +102,16 @@ class AccessibilityStatementGenerator
             'website_name' => get_option('website_name'),
             'technologies' => get_option('technologies'),
             'additional_technologies' => get_option('additional_technologies'),
+        ]);
+    }
+
+    private function getEvidence()
+    {
+        echo psg_view('partials/evidence', [
+            'website_name' => get_option('website_name'),
+            'statement' => get_option('evaluation_statement_link'),
+            'report' => get_option('recent_evaluation_report_link'),
+            'other_evidence' => get_option('other_evidence'),
         ]);
     }
 
