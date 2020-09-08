@@ -36,6 +36,8 @@ class AccessibilityStatementGenerator
 
         $this->getMeasures();
 
+        $this->getTechnicalInformation();
+
         $this->getAdditionalConsiderations();
 
         $this->getApprovalStatement();
@@ -76,6 +78,15 @@ class AccessibilityStatementGenerator
             'organisation' => get_option('organisation_name'),
             'measures' => get_option('measures'),
             'additional_measures' => get_option('additional_measures'),
+        ]);
+    }
+
+    private function getTechnicalInformation()
+    {   
+        echo psg_view('partials/compatibilities', [
+            'website_name' => get_option('website_name'),
+            'compatible_environments' => get_option('compatible_environments'),
+            'known_incompatibilities' => get_option('incompatible_environments')
         ]);
     }
 
