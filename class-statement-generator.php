@@ -67,6 +67,9 @@ class StatementGenerator {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Output the complaints procedure
+	 */
 	private function get_complaints_procedure() {
 		echo psg_view(
 			'partials/complaints-procedure',
@@ -76,16 +79,22 @@ class StatementGenerator {
 		);
 	}
 
+	/**
+	 * Output the approval statement
+	 */
 	private function get_approval_statement() {
 		echo psg_view(
 			'partials/approval-statement',
 			array(
 				'approval_function' => get_option( 'approval_function' ),
-				'approved_by' => get_option( 'approval_person_or_department' ),
+				'approved_by'       => get_option( 'approval_person_or_department' ),
 			)
 		);
 	}
 
+	/**
+	 * Output any additional considerations
+	 */
 	private function get_additional_considerations() {
 		echo psg_view(
 			'partials/additional-considerations',
@@ -95,77 +104,98 @@ class StatementGenerator {
 		);
 	}
 
+	/**
+	 * Output measures
+	 */
 	private function get_measures() {
 		echo psg_view(
 			'partials/measures',
 			array(
-				'website_name' => get_option( 'website_name' ),
-				'organisation' => get_option( 'organisation_name' ),
-				'measures' => get_option( 'measures' ),
+				'website_name'        => get_option( 'website_name' ),
+				'organisation'        => get_option( 'organisation_name' ),
+				'measures'            => get_option( 'measures' ),
 				'additional_measures' => get_option( 'additional_measures' ),
 			)
 		);
 	}
 
+	/**
+	 * Output limitations
+	 */
 	private function get_limitations() {
 		echo psg_view(
 			'partials/limitations',
 			array(
 				'website_name' => get_option( 'website_name' ),
-				'limitations' => get_option( 'accessibility_limitation' ),
+				'limitations'  => get_option( 'accessibility_limitation' ),
 			)
 		);
 	}
 
+	/**
+	 * Output compatible and incompatible environments
+	 */
 	private function get_compatibility_information() {   
 		echo psg_view(
 			'partials/compatibilities',
 			array(
-				'website_name' => get_option( 'website_name' ),
+				'website_name'            => get_option( 'website_name' ),
 				'compatible_environments' => get_option( 'compatible_environments' ),
 				'known_incompatibilities' => get_option( 'incompatible_environments' ),
 			)
 		);
 	}
 
+	/**
+	 * Output used technologies
+	 */
 	private function get_technologies() {
 		echo psg_view(
 			'partials/technologies',
 			array(
-				'website_name' => get_option( 'website_name' ),
-				'technologies' => get_option( 'technologies' ),
+				'website_name'            => get_option( 'website_name' ),
+				'technologies'            => get_option( 'technologies' ),
 				'additional_technologies' => get_option( 'additional_technologies' ),
 			)
 		);
 	}
 
+	/**
+	 * Output accessibility evidence
+	 */
 	private function get_evidence() {
 		echo psg_view(
 			'partials/evidence',
 			array(
-				'website_name' => get_option( 'website_name' ),
-				'statement' => get_option( 'evaluation_statement_link' ),
-				'report' => get_option( 'recent_evaluation_report_link' ),
+				'website_name'   => get_option( 'website_name' ),
+				'statement'      => get_option( 'evaluation_statement_link' ),
+				'report'         => get_option( 'recent_evaluation_report_link' ),
 				'other_evidence' => get_option( 'other_evidence' ),
 			)
 		);
 	}
 
+	/**
+	 * Output approaches to assessment
+	 */
 	private function get_assessment_approaches() {
 		echo psg_view(
 			'partials/approaches',
 			array(
-				'website_name' => get_option( 'website_name' ),
-				'organisation' => get_option( 'organisation_name' ),
-				'approaches' => get_option( 'assessment_approach' ),
+				'website_name'          => get_option( 'website_name' ),
+				'organisation'          => get_option( 'organisation_name' ),
+				'approaches'            => get_option( 'assessment_approach' ),
 				'additional_approaches' => get_option( 'additional_approaches' ),
-			)
+			),
 		);
 	}
 
+	/**
+	 * Output feedback and contact information
+	 */
 	private function get_feedback_section() {
 		echo psg_view(
-			"partials/feedback",
+			'partials/feedback',
 			array(
 				'website_name' => get_option( 'website_name' ),
 				'contact_details' => array(
@@ -180,6 +210,9 @@ class StatementGenerator {
 		);
 	}
 
+	/**
+	 * Output the accessibility status description
+	 */
 	private function get_status_description() {
 		$conformance_status = get_option( 'conformance_status' );
 
@@ -197,14 +230,17 @@ class StatementGenerator {
 		echo psg_view(
 			'partials/status',
 			array(
-				'status' => $conformance_status,
-				'details' => $conformance_details,
-				'standard' => $standard,
+				'status'       => $conformance_status,
+				'details'      => $conformance_details,
+				'standard'     => $standard,
 				'website_name' => get_option( 'website_name' ),
-			)
+			),
 		);
 	}
 
+	/**
+	 * Output the footer
+	 */
 	private function get_footer() {
 		echo psg_view(
 			'partials/footer',
@@ -214,6 +250,9 @@ class StatementGenerator {
 		);
 	}
 
+	/**
+	 * Output the statement introduction
+	 */
 	private function get_introduction() {
 		$website_name = get_option( 'website_name' );
 		$organisation = get_option( 'organisation_name' );
@@ -237,25 +276,25 @@ class StatementGenerator {
 	public function get_conformance_details( $status ) {
 		$conformance_details = array(
 			'fully' => array(
-				'name' => 'fully conformant',
+				'name'        => 'fully conformant',
 				'description' => __( 'Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.', 'a11y-statement' ),
 			),
 			'partially' => array(
-				'name' => 'partially conformant',
+				'name'        => 'partially conformant',
 				'description' => __( 'Partially conformant means that some parts of the content do not fully conform to the accessibility standard.', 'a11y-statement' ),
 			),
 			'non_conformant' => array(
-				'name' => 'non conformant',
+				'name'        => 'non conformant',
 				'description' => __( 'Non conformant means that the content does not conform the accessibility standard.', 'a11y-statement' ),
 			),
 			'not_assessed' => array(
-				'name' => 'not assessed',
+				'name'        => 'not assessed',
 				'description' => __( 'Not assessed means that the content has not been evaluated or the evaluation results are not available.', 'a11y-statement' ),
 			),
 		);
 
 		$default = array(
-			'name' => '',
+			'name'        => '',
 			'description' => '',
 		);
 
