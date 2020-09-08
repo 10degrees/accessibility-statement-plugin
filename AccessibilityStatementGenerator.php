@@ -75,6 +75,7 @@ class AccessibilityStatementGenerator
             'website_name' => get_option('website_name'),
             'organisation' => get_option('organisation_name'),
             'measures' => get_option('measures'),
+            'additional_measures' => get_option('additional_measures'),
         ]);
     }
 
