@@ -10,7 +10,7 @@
 require_once 'helpers.php';
 require_once 'Fields/class-abstract-field.php';
 require_once 'Fields/class-textfield.php';
-require_once 'Fields/RadioButtons.php';
+require_once 'Fields/class-radiobuttons.php';
 require_once 'Fields/class-checkboxes.php';
 require_once 'Fields/class-textarea.php';
 require_once 'Fields/DynamicTextFields.php';
