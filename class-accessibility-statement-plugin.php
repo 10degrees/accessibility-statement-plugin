@@ -7,11 +7,11 @@ require_once 'class-statement-generator.php';
  */
 class AccessibilityStatementPlugin {
 	/**
-	 * Plugin admin pages
+	 * Plugin admin sections
 	 *
 	 * @var array
 	 */
-	private $pages = array();
+	private $sections = array();
 
 	/**
 	 * Contructor
@@ -21,7 +21,7 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	public function __construct() {
-		$this->pages = array(
+		$this->sections = array(
 			new BasicInformation(),
 			new YourEfforts(),
 			new TechnicalInformation(),
@@ -63,7 +63,7 @@ class AccessibilityStatementPlugin {
 		echo psg_view(
 			'settings-page',
 			array(
-				'pages' => $this->pages,
+				'sections' => $this->sections,
 			)
 		);
 	}

@@ -9,8 +9,8 @@ $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $pages[0]->getId();  ?>
 	<h1><?php _e( 'Accessibility Statement', 'a11y-statement' ); ?></h1>
 
 	<h2 class="nav-tab-wrapper">
-		<?php foreach ( $pages as $settings_page ) : ?>
-			<a href="<?php echo admin_url( 'options-general.php?page=accessibility-statement&tab=' . $settings_page->getId() ); ?>" class="nav-tab<?php echo $active_tab === $settings_page->getId() ? ' nav-tab-active' : ''; ?>"><?php echo $settings_page->getTitle(); ?></a>
+		<?php foreach ( $sections as $section ) : ?>
+			<a href="<?php echo admin_url( 'options-general.php?page=accessibility-statement&tab=' . $section->getId() ); ?>" class="nav-tab<?php echo $active_tab === $section->getId() ? ' nav-tab-active' : ''; ?>"><?php echo $section->getTitle(); ?></a>
 		<?php endforeach; ?>
 	</h2>
 
