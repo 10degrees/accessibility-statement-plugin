@@ -40,6 +40,8 @@ class AccessibilityStatementGenerator
 
         $this->getTechnologies();
 
+        $this->getLimitations();
+
         $this->getAssessmentApproaches();
 
         $this->getEvidence();
@@ -84,6 +86,15 @@ class AccessibilityStatementGenerator
             'organisation' => get_option('organisation_name'),
             'measures' => get_option('measures'),
             'additional_measures' => get_option('additional_measures'),
+        ]);
+    }
+
+    private function getLimitations()
+    {
+        error_log(json_encode(get_option('accessibility_limitation')));
+        echo psg_view('partials/limitations', [
+            'website_name' => get_option('website_name'),
+            'limitations' => get_option('accessibility_limitation'),
         ]);
     }
 
