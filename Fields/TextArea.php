@@ -2,7 +2,7 @@
 
 class TextArea extends AbstractField
 {
-    public function renderInput($value = null)
+    public function render_input($value = null)
     {
         $rendered_value = get_option($this->id);
         if($value){

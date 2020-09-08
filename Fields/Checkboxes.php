@@ -15,7 +15,7 @@ class Checkboxes extends AbstractField
         parent::__construct($args);
     }
 
-    public function renderInput($value = null)
+    public function render_input($value = null)
     {
         $current_values = get_option($this->id);
         if (!is_array($current_values)) {

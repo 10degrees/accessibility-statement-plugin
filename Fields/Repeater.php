@@ -85,8 +85,8 @@ class Repeater extends AbstractField
         foreach ($template as $field) {
             $clone = clone $field;
 
-            $clone->addClass($this->id);
-            $clone->setId($this->buildFieldID($field, count($this->saved_rows)));
+            $clone->add_class($this->id);
+            $clone->set_id($this->buildFieldID($field, count($this->saved_rows)));
 
             $blank_fields[] = $clone;
         }
@@ -109,8 +109,8 @@ class Repeater extends AbstractField
             foreach ($template as $field) {
                 $clone = clone $field;
 
-                $clone->addClass($this->id);
-                $clone->setId($this->buildFieldID($field, $i));
+                $clone->add_class($this->id);
+                $clone->set_id($this->buildFieldID($field, $i));
 
                 $saved_fields[] = $clone;
             }
@@ -127,7 +127,7 @@ class Repeater extends AbstractField
      *
      * @return  void         
      */
-    public function renderInput($value = "")
+    public function render_input($value = "")
     {
         $this->renderFields();
         
@@ -155,7 +155,7 @@ class Repeater extends AbstractField
             }
             ?>
             <div class="<?php echo $this->id; ?>">
-                <?php $field->renderField($value); ?>
+                <?php $field->render_field($value); ?>
             </div>
             <?php
             $i++;
@@ -176,7 +176,7 @@ class Repeater extends AbstractField
      */
     private function buildFieldID($field, $row_number)
     {
-        return $this->id . '['. $row_number .'][' . $field->getId() . ']';
+        return $this->id . '['. $row_number .'][' . $field->get_id() . ']';
     }
 
     /**

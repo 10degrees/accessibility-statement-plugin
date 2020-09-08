@@ -18,7 +18,7 @@ class DynamicTextFields extends AbstractField
         parent::__construct($args);
     }
 
-    public function renderInput($value = null)
+    public function render_input($value = null)
     {
         $existing_values = get_option($this->id);
         if (!$existing_values) {

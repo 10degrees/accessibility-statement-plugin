@@ -5,19 +5,19 @@
  *
  * To ouput a view you would want to echo it
  *
- * @param  string $fileName excluding file extension
- * @param  array  $vars
- * @return string
+ * @param  string $file_name excluding file extension.
+ * @param  array  $vars Variables to make available in the file.
+ *
+ * @return string The view HTML.
  */
-function psg_view($fileName, $vars = [])
-{
-    foreach ($vars as $key => $value) {
-        ${$key} = $value;
-    }
+function psg_view( $file_name, $vars = array() ) {
+	foreach ( $vars as $key => $value ) {
+		${$key} = $value;
+	}
 
-    ob_start();
+	ob_start();
 
-    include plugin_dir_path(__FILE__) . '/' . $fileName . '.php';
+	include plugin_dir_path( __FILE__ ) . '/' . $file_name . '.php';
 
-    return ob_get_clean();
+	return ob_get_clean();
 }

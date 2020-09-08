@@ -15,7 +15,7 @@ class RadioButtons extends AbstractField
         parent::__construct($args);
     }
 
-    public function renderInput($value = null)
+    public function render_input($value = null)
     {
         ?> 
         <fieldset>

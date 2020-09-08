@@ -8,7 +8,7 @@
  */
 
 require_once 'helpers.php';
-require_once 'Fields/AbstractField.php';
+require_once 'Fields/class-abstract-field.php';
 require_once 'Fields/TextField.php';
 require_once 'Fields/RadioButtons.php';
 require_once 'Fields/Checkboxes.php';
