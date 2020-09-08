@@ -40,6 +40,8 @@ class AccessibilityStatementGenerator
 
         $this->getTechnologies();
 
+        $this->getAssessmentApproaches();
+
         $this->getAdditionalConsiderations();
 
         $this->getApprovalStatement();
@@ -88,7 +90,7 @@ class AccessibilityStatementGenerator
         echo psg_view('partials/compatibilities', [
             'website_name' => get_option('website_name'),
             'compatible_environments' => get_option('compatible_environments'),
-            'known_incompatibilities' => get_option('incompatible_environments')
+            'known_incompatibilities' => get_option('incompatible_environments'),
         ]);
     }
 
@@ -97,7 +99,17 @@ class AccessibilityStatementGenerator
         echo psg_view('partials/technologies', [
             'website_name' => get_option('website_name'),
             'technologies' => get_option('technologies'),
-            'additional_technologies' => get_option('additional_technologies')
+            'additional_technologies' => get_option('additional_technologies'),
+        ]);
+    }
+
+    private function getAssessmentApproaches()
+    {
+        echo psg_view('partials/approaches', [
+            'website_name' => get_option('website_name'),
+            'organisation' => get_option('organisation_name'),
+            'approaches' => get_option('assessment_approach'),
+            'additional_approaches' => get_option('additional_approaches'),
         ]);
     }
 

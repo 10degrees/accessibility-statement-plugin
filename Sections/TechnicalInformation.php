@@ -58,11 +58,11 @@ class TechnicalInformation extends AbstractSettingsSection
                 'options' => [
                     [
                         'label' => 'Self-evaluation: the content was evaluated by your own organization or the developer of the content',
-                        'value' => 'self_evaluation',
+                        'value' => 'Self-evaluation',
                     ],
                     [
                         'label' => 'External evaluation: the content was evaluated by an external entity not involved in the design and development process',
-                        'value' => 'external_evaluation',
+                        'value' => 'Extenal evaluation',
                     ],
                 ],
             ]),
