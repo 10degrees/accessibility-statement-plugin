@@ -19,11 +19,11 @@ abstract class AbstractField {
 	protected $id;
 
 	/**
-	 * Page the field belongs to
+	 * Section the field belongs to
 	 *
 	 * @var string
 	 */
-	protected $page_id;
+	protected $section_id;
 
 	/**
 	 * Other arguements to pass to add_settings_field
@@ -110,14 +110,14 @@ abstract class AbstractField {
 	}
 
 	/**
-	 * Set the Page ID for this field
+	 * Set the Section ID for this field
 	 *
-	 * @param string $page_id  Page ID.
+	 * @param string $section_id  Section ID.
 	 *
 	 * @return  void
 	 */
-	public function set_page( $page_id ) {
-		$this->page_id = $page_id;
+	public function set_section( $section_id ) {
+		$this->section_id = $section_id;
 	}
 
 	/**
@@ -130,13 +130,13 @@ abstract class AbstractField {
 			$this->id,
 			$this->label,
 			array( $this, 'render_field' ),
-			$this->page_id,
-			$this->page_id,
+			$this->section_id,
+			$this->section_id,
 			$this->other_args,
 		);
 
 		register_setting(
-			$this->page_id,
+			$this->section_id,
 			$this->id,
 			array(
 				'sanitize_callback' => array( $this, 'sanitize' ),

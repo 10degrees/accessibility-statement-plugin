@@ -40,7 +40,7 @@ abstract class AbstractSettingsSection {
 	 */
 	public function register_fields() {
 		foreach ( $this->fields as $field ) {
-			$field->set_page( $this->id );
+			$field->set_section( $this->id );
 			$field->register();
 		}
 	}
