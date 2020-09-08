@@ -36,7 +36,7 @@ class AccessibilityStatementGenerator
 
         $this->getMeasures();
 
-        $this->getTechnicalInformation();
+        $this->getCompatibilityInformation();
 
         $this->getAdditionalConsiderations();
 
@@ -81,7 +81,7 @@ class AccessibilityStatementGenerator
         ]);
     }
 
-    private function getTechnicalInformation()
+    private function getCompatibilityInformation()
     {   
         echo psg_view('partials/compatibilities', [
             'website_name' => get_option('website_name'),
