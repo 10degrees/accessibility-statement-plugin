@@ -11,7 +11,7 @@ require_once 'helpers.php';
 require_once 'Fields/class-abstract-field.php';
 require_once 'Fields/TextField.php';
 require_once 'Fields/RadioButtons.php';
-require_once 'Fields/Checkboxes.php';
+require_once 'Fields/class-checkboxes.php';
 require_once 'Fields/TextArea.php';
 require_once 'Fields/DynamicTextFields.php';
 require_once 'Fields/Repeater.php';
