@@ -38,6 +38,8 @@ class AccessibilityStatementGenerator
 
         $this->getCompatibilityInformation();
 
+        $this->getTechnologies();
+
         $this->getAdditionalConsiderations();
 
         $this->getApprovalStatement();
@@ -87,6 +89,15 @@ class AccessibilityStatementGenerator
             'website_name' => get_option('website_name'),
             'compatible_environments' => get_option('compatible_environments'),
             'known_incompatibilities' => get_option('incompatible_environments')
+        ]);
+    }
+
+    private function getTechnologies()
+    {
+        echo psg_view('partials/technologies', [
+            'website_name' => get_option('website_name'),
+            'technologies' => get_option('technologies'),
+            'additional_technologies' => get_option('additional_technologies')
         ]);
     }
 
