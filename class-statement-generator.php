@@ -13,6 +13,7 @@ class StatementGenerator {
 		$title = get_option( 'page_title' );
 
 		$page_id = get_option( 'accessibility_statement_page_id' );
+		$page_exists = is_string( get_post_status( $page_id ) );
 
 		$statement_page = array(
 			'post_title'   => $title,
@@ -22,7 +23,7 @@ class StatementGenerator {
 			'post_content' => $this->generate_html(),
 		);
 
-		if ( $page_id ) {
+		if ( $page_id && $page_exists ) {
 			$statement_page['ID'] = $page_id;
 		}
 
