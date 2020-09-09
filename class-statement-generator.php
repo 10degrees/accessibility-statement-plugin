@@ -12,7 +12,7 @@ class StatementGenerator {
 	public function create_page() {
 		$title = get_option( 'page_title' );
 
-		$page = get_page_by_title( $title );
+		$page_id = get_option( 'accessibility_statement_page_id' );
 
 		$statement_page = array(
 			'post_title'   => $title,
@@ -22,10 +22,14 @@ class StatementGenerator {
 			'post_content' => $this->generate_html(),
 		);
 
-		if ( $page ) {
-			$statement_page['ID'] = $page->ID;
+		if ( $page_id ) {
+			$statement_page['ID'] = $page_id;
 		}
-		wp_insert_post( $statement_page );
+
+		$inserted_post = wp_insert_post( $statement_page );
+		if ( $inserted_post ) {
+			update_option( 'accessibility_statement_page_id', $inserted_post );
+		}
 
 		wp_redirect( admin_url( 'options-general.php?page=accessibility-statement' ) );
 	}
