@@ -30,7 +30,7 @@ class StatementGenerator {
 		}
 
 		$inserted_post = wp_insert_post( $statement_page );
-		if ( false ) {
+		if ( $inserted_post ) {
 			update_option( 'accessibility_statement_page_id', $inserted_post );
 			$redirect_url .= '&success=1';
 		} else {

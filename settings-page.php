@@ -3,22 +3,6 @@
  * Admin Page
  */
 
-if ( isset( $_GET[ 'success' ] ) ) {
-	?>
-	<div class="notice updated">
-		<p><?php _e( 'Accessibility statement has been updated.', 'a11y-statement' ); ?></p>
-	</div>
-	<?php
-}
-
-if ( isset( $_GET[ 'error' ] ) ) {
-	?>
-	<div class="notice error">
-		<p><?php _e( 'Error while updating accessibility statement.', 'a11y-statement' ); ?></p>
-	</div>
-	<?php
-}
-
 $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>  
 
 <div class="wrap">
