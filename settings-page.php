@@ -3,7 +3,7 @@
  * Admin Page
  */
 
-$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $pages[0]->getId();  ?>  
+$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->getId();  ?>  
 
 <div class="wrap">
 	<h1><?php _e( 'Accessibility Statement', 'a11y-statement' ); ?></h1>
