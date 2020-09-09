@@ -23,7 +23,7 @@ $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>
 		?>
 	</form>
 
-	<form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="POST">
+	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST">
 		<input type="hidden" name="action" value="generate_statement">
 		<?php submit_button( __( 'Generate Statement', 'a11y-statement' ), 'secondary' ); ?>
 	</form>
