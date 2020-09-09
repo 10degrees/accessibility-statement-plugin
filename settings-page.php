@@ -19,14 +19,14 @@ if ( isset( $_GET[ 'error' ] ) ) {
 	<?php
 }
 
-$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->getId();  ?>  
+$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>  
 
 <div class="wrap">
 	<h1><?php _e( 'Accessibility Statement', 'a11y-statement' ); ?></h1>
 
 	<h2 class="nav-tab-wrapper">
 		<?php foreach ( $sections as $section ) : ?>
-			<a href="<?php echo admin_url( 'options-general.php?page=accessibility-statement&tab=' . $section->getId() ); ?>" class="nav-tab<?php echo $active_tab === $section->getId() ? ' nav-tab-active' : ''; ?>"><?php echo $section->getTitle(); ?></a>
+			<a href="<?php echo admin_url( 'options-general.php?page=accessibility-statement&tab=' . $section->get_id() ); ?>" class="nav-tab<?php echo $active_tab === $section->get_id() ? ' nav-tab-active' : ''; ?>"><?php echo $section->get_title(); ?></a>
 		<?php endforeach; ?>
 	</h2>
 

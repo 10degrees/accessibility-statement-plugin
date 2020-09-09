@@ -73,7 +73,7 @@ abstract class AbstractSettingsSection {
 	 *
 	 * @return  string  ID
 	 */
-	public function getId() {
+	public function get_id() {
 		return $this->id;
 	}
 
@@ -82,7 +82,7 @@ abstract class AbstractSettingsSection {
 	 *
 	 * @return  string  Title
 	 */
-	public function getTitle()
+	public function get_title()
 	{
 		return $this->title;
 	}
