@@ -18,7 +18,7 @@ class TextField extends AbstractField {
 		}
 
 		?>
-			<input type="text" name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>" value="<?php echo $rendered_value; ?>" class="regular-text">
+			<input type="text" name="<?php echo esc_attr( $this->id ); ?>" id="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $rendered_value ); ?>" class="regular-text">
 		<?php
 	}
 }
