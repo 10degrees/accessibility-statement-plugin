@@ -10,18 +10,18 @@ class StatementGenerator {
 	 * @return  void
 	 */
 	public function create_page() {
-		$title = get_option( 'page_title' );
-
-		$page_id = get_option( 'accessibility_statement_page_id' );
-		$page_exists = is_string( get_post_status( $page_id ) );
-
 		$redirect_url = 'options-general.php?page=accessibility-statement';
 
+		$page_id = get_option( 'accessibility_statement_page' );
+		$page_exists = is_string( get_post_status( $page_id ) );
+
+		if ( ! $page_exists ) {
+			$redirect_url .= '&error=1';
+			wp_redirect( admin_url( $redirect_url ) );
+			exit;
+		}
+		
 		$statement_page = array(
-			'post_title'   => $title,
-			'post_status'  => 'publish',
-			'post_author'  => 1,
-			'post_type'    => 'page',
 			'post_content' => $this->generate_html(),
 		);
 
@@ -29,15 +29,15 @@ class StatementGenerator {
 			$statement_page['ID'] = $page_id;
 		}
 
-		$inserted_post = wp_insert_post( $statement_page );
+		$inserted_post = wp_update_post( $statement_page );
 		if ( $inserted_post ) {
-			update_option( 'accessibility_statement_page_id', $inserted_post );
-			$redirect_url .= '&success=1';
+			$redirect_url .= '&saved=1';
 		} else {
 			$redirect_url .= '&error=1';
 		}
 
 		wp_redirect( admin_url( $redirect_url ) );
+		exit;
 	}
 
 	/**

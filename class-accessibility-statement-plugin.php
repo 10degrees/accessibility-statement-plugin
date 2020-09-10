@@ -89,7 +89,7 @@ class AccessibilityStatementPlugin {
 		$screen = get_current_screen();
 
 		if ( 'settings_page_accessibility-statement' === $screen->id ) {
-			if ( isset( $_GET['success'] ) ) {
+			if ( isset( $_GET['saved'] ) ) {
 				add_settings_error( 'page_title', 'accessibility_statement_success', __( 'Accessibility Statement page updated successfully.', 'a11y-statement' ), 'success' );
 			}
 

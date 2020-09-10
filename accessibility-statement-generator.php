@@ -15,6 +15,7 @@ require_once 'Fields/class-checkboxes.php';
 require_once 'Fields/class-textarea.php';
 require_once 'Fields/class-dynamic-text-fields.php';
 require_once 'Fields/class-repeater.php';
+require_once 'Fields/class-page-select.php';
 
 require_once 'class-accessibility-statement-plugin.php';
 require_once 'Sections/class-abstract-settings-section.php';
