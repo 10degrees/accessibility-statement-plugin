@@ -5,4 +5,4 @@
  */
 
 ?>
-<p><?php _e( 'This statement was created on', 'a11y-statement' ); ?> <?php echo $date_of_publication; ?> <?php _e( 'using the Accessibility Statement Generator Plugin', 'a11y-statement' ); ?>. </p>
+<p><?php esc_html_e( 'This statement was created on', 'a11y-statement' ); ?> <?php echo esc_html( $date_of_publication ); ?> <?php esc_html_e( 'using the Accessibility Statement Generator Plugin', 'a11y-statement' ); ?>. </p>
