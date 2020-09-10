@@ -90,19 +90,11 @@ class AccessibilityStatementPlugin {
 
 		if ( 'settings_page_accessibility-statement' === $screen->id ) {
 			if ( isset( $_GET['success'] ) ) {
-				?>
-				<div class="notice updated">
-					<p><?php esc_html_e( 'Accessibility Statement page updated successfully.', 'a11y-statement' ); ?></p>
-				</div>
-				<?php
+				add_settings_error( 'page_title', 'accessibility_statement_success', __( 'Accessibility Statement page updated successfully.', 'a11y-statement' ), 'success' );
 			}
 
 			if ( isset( $_GET['error'] ) ) {
-				?>
-				<div class="notice error">
-					<p><?php esc_html_e( 'Error while updating accessibility statement.', 'a11y-statement' ); ?></p>
-				</div>
-				<?php
+				add_settings_error( 'page_title', 'accessiblity_statement_error', __( 'Unable to create an Accessibility Statement page.', 'a11y-statement' ), 'error' );
 			}
 		}
 	}

@@ -15,7 +15,7 @@ $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>
 			$is_active_tab = $active_tab === $section->get_id();
 			$active_class  = $is_active_tab ? 'nav-tab-active' : '';
 			?>
-			<a href="<?php echo esc_url( $section_url ); ?>" class="nav-tab<?php echo $active_class; ?>"><?php echo esc_html( $section->get_title() ); ?></a>
+			<a href="<?php echo esc_url( $section_url ); ?>" class="nav-tab <?php echo $active_class; ?>"><?php echo esc_html( $section->get_title() ); ?></a>
 		<?php 
 		endforeach; 
 		?>
