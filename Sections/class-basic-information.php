@@ -32,10 +32,6 @@ class BasicInformation extends AbstractSettingsSection {
 				'label' => __('Page', 'a11y-statement'),
 			)),
 			new TextField(array(
-				'id' => 'page_title',
-				'label' => __('Page Title', 'a11y-statement'),
-			)),
-			new TextField(array(
 				'id' => 'organisation_name',
 				'label' => __('Organisation Name', 'a11y-statement'),
 				'description' => __('(Example: “Example Inc.”)', 'a11y-statement'),
