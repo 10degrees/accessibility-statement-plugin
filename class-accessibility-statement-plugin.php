@@ -53,7 +53,7 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	public function add_settings_page() {
-		add_submenu_page( 'options-general.php', __( 'Accessibility Statement', 'a11y-statement' ), __( 'Accessibility', 'a11y-statement' ), 'manage_options', 'accessibility-statement', array( $this, 'page_contents' ) );
+		add_options_page( __( 'Accessibility Statement', 'a11y-statement' ), __( 'Accessibility', 'a11y-statement' ), 'manage_options', 'accessibility-statement', array( $this, 'page_contents' ), 7);
 	}
 
 	/**
