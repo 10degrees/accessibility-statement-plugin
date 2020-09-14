@@ -30,11 +30,11 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 		);
 
 		$view_href = get_permalink( $accessibility_statement_id );
-		
+
 		?>
 		<p>
 			<?php
-			if ( 'publish' === get_post_status( $accessibility_statement_id ) ){
+			if ( 'publish' === get_post_status( $accessibility_statement_id ) ) {
 				printf(
 					/* translators: 1: URL to edit Accessibility Statement page, 2: URL to view Accessibility Statement page. */
 					__( '<a href="%1$s">Edit</a> or <a href="%2$s">view</a> your Accessibility Statement page content.' ),
@@ -92,7 +92,7 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 							)
 						);
 
-						wp_nonce_field( 'set_accessibility_statement', 'set_accessibility_statement');
+						wp_nonce_field( 'set_accessibility_statement', 'set_accessibility_statement' );
 
 						submit_button( __( 'Use This Page' ), 'primary', 'submit', false, array( 'id' => 'set-page' ) );
 						?>

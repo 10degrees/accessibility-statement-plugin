@@ -69,7 +69,7 @@ class AccessibilityStatementPlugin {
 	/**
 	 * Check a nonce
 	 *
-	 * @param   string  $nonce_field  Nonce name
+	 * @param   string $nonce_field  Nonce name.
 	 *
 	 * @return  boolean                True if we can verify the nonce, else false
 	 */
