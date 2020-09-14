@@ -3,7 +3,12 @@
  * Admin Page
  */
 
-$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>  
+$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();
+
+if ( $_GET['settings-updated'] == 'true' ) { 
+	StatementGenerator::create_page();
+}
+?>  
 
 <div class="wrap">
 	<h1><?php _e( 'Accessibility Statement', 'a11y-statement' ); ?></h1>
@@ -23,15 +28,11 @@ $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();  ?>
 
 	<form action="options.php" method="POST" class="main-settings">
 		<?php
+		
 		settings_fields( $active_tab );
 		do_settings_sections( $active_tab );
 
 		submit_button();
 		?>
-	</form>
-
-	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="POST">
-		<input type="hidden" name="action" value="generate_statement">
-		<?php submit_button( __( 'Generate Statement', 'a11y-statement' ), 'secondary' ); ?>
 	</form>
 </div>

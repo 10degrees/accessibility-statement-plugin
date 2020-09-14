@@ -151,7 +151,7 @@ class Repeater extends AbstractField {
 				$value     = array_values( $this->saved_rows[ $row_index ] )[ $key_index ];
 			}
 			?>
-			<div class="<?php echo $this->id; ?>">
+			<div>
 				<?php $field->render_field( $value ); ?>
 			</div>
 			<?php

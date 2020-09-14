@@ -30,9 +30,6 @@ class AccessibilityStatementPlugin {
 		);
 
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
-		add_action( 'admin_post_generate_statement', array( $this, 'create_page' ) );
-
-		add_action( 'admin_notices', array( $this, 'add_admin_notices' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'display_post_states', array( $this, 'add_post_state' ), 10, 2 );
@@ -46,7 +43,7 @@ class AccessibilityStatementPlugin {
 	 *
 	 * @return  array                Post States for the current post
 	 */
-	public function add_post_state($post_states, $post){
+	public function add_post_state( $post_states, $post ) {
 		$statement_id = get_option( 'accessibility_statement_page' );
 
 		if ( $statement_id == $post->ID ) {
@@ -87,34 +84,5 @@ class AccessibilityStatementPlugin {
 				'sections' => $this->sections,
 			)
 		);
-	}
-
-	/**
-	 * Create the accessibility statement
-	 *
-	 * @return  void
-	 */
-	public function create_page() {
-		$generator = new StatementGenerator();
-		$generator->create_page();
-	}
-
-	/**
-	 * Display notices on settings page
-	 *
-	 * @return void
-	 */
-	public function add_admin_notices() {
-		$screen = get_current_screen();
-
-		if ( 'settings_page_accessibility-statement' === $screen->id ) {
-			if ( isset( $_GET['saved'] ) ) {
-				add_settings_error( 'accessibility_statement_page', 'accessibility_statement_success', __( 'Accessibility Statement page updated successfully.', 'a11y-statement' ), 'success' );
-			}
-
-			if ( isset( $_GET['error'] ) ) {
-				add_settings_error( 'accessibility_statement_page', 'accessiblity_statement_error', __( 'Unable to create an Accessibility Statement page.', 'a11y-statement' ), 'error' );
-			}
-		}
 	}
 }

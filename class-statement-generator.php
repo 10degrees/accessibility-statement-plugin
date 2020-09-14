@@ -10,20 +10,12 @@ class StatementGenerator {
 	 *
 	 * @return  void
 	 */
-	public function create_page() {
-		$redirect_url = 'options-general.php?page=accessibility-statement';
-
+	public static function create_page() {
 		$page_id = get_option( 'accessibility_statement_page' );
 		$page_exists = is_string( get_post_status( $page_id ) );
-
-		if ( ! $page_exists ) {
-			$redirect_url .= '&error=1';
-			wp_redirect( admin_url( $redirect_url ) );
-			exit;
-		}
 		
 		$statement_page = array(
-			'post_content' => $this->generate_html(),
+			'post_content' => self::generate_html(),
 		);
 
 		if ( $page_id && $page_exists ) {
@@ -31,14 +23,6 @@ class StatementGenerator {
 		}
 
 		$inserted_post = wp_update_post( $statement_page );
-		if ( $inserted_post ) {
-			$redirect_url .= '&saved=1';
-		} else {
-			$redirect_url .= '&error=1';
-		}
-
-		wp_redirect( admin_url( $redirect_url ) );
-		exit;
 	}
 
 	/**
@@ -46,34 +30,34 @@ class StatementGenerator {
 	 *
 	 * @return  string  Statement HTML
 	 */
-	public function generate_html() {
+	public static function generate_html() {
 		ob_start();
 
-		$this->get_introduction();
+		self::get_introduction();
 
-		$this->get_status_description();
+		self::get_status_description();
 
-		$this->get_feedback_section();
+		self::get_feedback_section();
 
-		$this->get_measures();
+		self::get_measures();
 
-		$this->get_compatibility_information();
+		self::get_compatibility_information();
 
-		$this->get_technologies();
+		self::get_technologies();
 
-		$this->get_limitations();
+		self::get_limitations();
 
-		$this->get_assessment_approaches();
+		self::get_assessment_approaches();
 
-		$this->get_evidence();
+		self::get_evidence();
 
-		$this->get_additional_considerations();
+		self::get_additional_considerations();
 
-		$this->get_approval_statement();
+		self::get_approval_statement();
 
-		$this->get_complaints_procedure();
+		self::get_complaints_procedure();
 
-		$this->get_footer();
+		self::get_footer();
 
 		return ob_get_clean();
 	}
@@ -81,7 +65,7 @@ class StatementGenerator {
 	/**
 	 * Output the complaints procedure
 	 */
-	private function get_complaints_procedure() {
+	private static function get_complaints_procedure() {
 		echo psg_view(
 			'partials/complaints-procedure',
 			array(
@@ -93,7 +77,7 @@ class StatementGenerator {
 	/**
 	 * Output the approval statement
 	 */
-	private function get_approval_statement() {
+	private static function get_approval_statement() {
 		echo psg_view(
 			'partials/approval-statement',
 			array(
@@ -106,7 +90,7 @@ class StatementGenerator {
 	/**
 	 * Output any additional considerations
 	 */
-	private function get_additional_considerations() {
+	private static function get_additional_considerations() {
 		echo psg_view(
 			'partials/additional-considerations',
 			array(
@@ -118,7 +102,7 @@ class StatementGenerator {
 	/**
 	 * Output measures
 	 */
-	private function get_measures() {
+	private static function get_measures() {
 		echo psg_view(
 			'partials/measures',
 			array(
@@ -133,7 +117,7 @@ class StatementGenerator {
 	/**
 	 * Output limitations
 	 */
-	private function get_limitations() {
+	private static function get_limitations() {
 		echo psg_view(
 			'partials/limitations',
 			array(
@@ -146,7 +130,7 @@ class StatementGenerator {
 	/**
 	 * Output compatible and incompatible environments
 	 */
-	private function get_compatibility_information() {   
+	private static function get_compatibility_information() {   
 		echo psg_view(
 			'partials/compatibilities',
 			array(
@@ -160,7 +144,7 @@ class StatementGenerator {
 	/**
 	 * Output used technologies
 	 */
-	private function get_technologies() {
+	private static function get_technologies() {
 		echo psg_view(
 			'partials/technologies',
 			array(
@@ -174,7 +158,7 @@ class StatementGenerator {
 	/**
 	 * Output accessibility evidence
 	 */
-	private function get_evidence() {
+	private static function get_evidence() {
 		echo psg_view(
 			'partials/evidence',
 			array(
@@ -189,7 +173,7 @@ class StatementGenerator {
 	/**
 	 * Output approaches to assessment
 	 */
-	private function get_assessment_approaches() {
+	private static function get_assessment_approaches() {
 		echo psg_view(
 			'partials/approaches',
 			array(
@@ -204,7 +188,7 @@ class StatementGenerator {
 	/**
 	 * Output feedback and contact information
 	 */
-	private function get_feedback_section() {
+	private static function get_feedback_section() {
 		echo psg_view(
 			'partials/feedback',
 			array(
@@ -224,12 +208,12 @@ class StatementGenerator {
 	/**
 	 * Output the accessibility status description
 	 */
-	private function get_status_description() {
+	private static function get_status_description() {
 		$conformance_status = get_option( 'conformance_status' );
 
 		$conformance_details = [];
 		if ( 'none' != $conformance_status ) {
-			$conformance_details = $this->get_conformance_details( get_option( 'conformance_status' ) );
+			$conformance_details = self::get_conformance_details( get_option( 'conformance_status' ) );
 		}
 	
 		$standard = get_option( 'standard_followed' );
@@ -252,7 +236,7 @@ class StatementGenerator {
 	/**
 	 * Output the footer
 	 */
-	private function get_footer() {
+	private static function get_footer() {
 		echo psg_view(
 			'partials/footer',
 			array(
@@ -264,7 +248,7 @@ class StatementGenerator {
 	/**
 	 * Output the statement introduction
 	 */
-	private function get_introduction() {
+	private static function get_introduction() {
 		$website_name = get_option( 'website_name' );
 		$organisation = get_option( 'organisation_name' );
 
@@ -284,7 +268,7 @@ class StatementGenerator {
 	 *
 	 * @return  array           The name of the conformance type and its description.
 	 */
-	public function get_conformance_details( $status ) {
+	public static function get_conformance_details( $status ) {
 		$conformance_details = array(
 			'fully' => array(
 				'name'        => 'fully conformant',
