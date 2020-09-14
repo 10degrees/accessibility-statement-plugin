@@ -1,7 +1,8 @@
 <?php
 /**
-* Admin Page
-*/
+ * Admin Page
+ */
+
 if ( ! current_user_can( 'manage_privacy_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage the accessibility statement on this site.' ) );
 }
@@ -35,7 +36,7 @@ $accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_state
 					)
 				);
 
-				if ( $has_pages ): 
+				if ( $has_pages ) :
 					?>
 					<form action="admin-post.php" method="POST" class="main-settings">
 						<input type="hidden" name="action" value="set_accessibility_statement">
@@ -61,7 +62,7 @@ $accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_state
 					<input type="hidden" name="action" value="create_accessibility_statement">
 					<span>
 						<?php
-						if( $has_pages ) {
+						if ( $has_pages ) {
 							_e( 'Or:' );
 						} else {
 							_e( 'There are no pages.' );
