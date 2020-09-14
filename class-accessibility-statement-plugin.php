@@ -110,10 +110,9 @@ class AccessibilityStatementPlugin {
 
 		if ( 'settings_page_accessibility-statement' === $screen->id ) {
 			$this->display_nonce_notices();
-			$this->get_update_notices();
-			$this->get_creation_notices();
-
-			$this->get_selected_statement_notices();
+			$this->display_update_statement_notices();
+			$this->display_create_statement_notices();
+			$this->display_selected_statement_notices();
 		}
 	}
 
@@ -138,7 +137,7 @@ class AccessibilityStatementPlugin {
 	 *
 	 * @return  void
 	 */
-	private function get_selected_statement_notices() {
+	private function display_selected_statement_notices() {
 		$accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_statement' );
 
 		if ( ! empty( $accessibility_statement_id ) ) {
@@ -172,7 +171,7 @@ class AccessibilityStatementPlugin {
 	 *
 	 * @return  void
 	 */
-	private function get_creation_notices() {
+	private function display_create_statement_notices() {
 		if ( $_GET['page-created-error'] ) {
 			add_settings_error(
 				'page_for_accessibility_statement',
@@ -188,7 +187,7 @@ class AccessibilityStatementPlugin {
 	 *
 	 * @return  void
 	 */
-	private function get_update_notices() {
+	private function display_update_statement_notices() {
 		if ( $_GET['page-updated'] ) {
 			$accessibility_statement_updated_message = __( 'Accessibility Statement page updated successfully.' );
 
