@@ -25,6 +25,14 @@ class AccessibilityStatementPlugin {
 		add_action( 'display_post_states', array( $this, 'add_post_state' ), 10, 2)  ;
 	}
 
+	/**
+	 * Add the post state for the Accessibility Statement
+	 *
+	 * @param   array  $post_states  Array of post states
+	 * @param   WP_Post  $post         Current Post
+	 *
+	 * @return  array                Array of post states
+	 */
 	public function add_post_state($post_states, $post) {
 		if ( intval( get_option( 'wp_page_for_accessibility_statement' ) ) === $post->ID ) {
 			$post_states['page_for_accessibility_statement'] = _x( 'Accessibility Statement Page', 'page label' );
