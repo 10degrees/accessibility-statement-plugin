@@ -97,7 +97,8 @@ if ( ! empty( $accessibility_statement_id ) ) {
 ?>
 
 <div class="wrap">
-	<h1><?php _e( 'Accessibility Statement', 'a11y-statement' ); ?></h1>
+	<h1><?php _e( 'Accessibility Settings', 'a11y-statement' ); ?></h1>
+	<h2><?php _e( 'Accessibility Statement Page', 'a11y-statement' ); ?></h2>
 
 	<table role="presentation">
 		<tr>
