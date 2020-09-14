@@ -1,27 +1,9 @@
 <?php
-
 /**
- * Load a view and pass variables into it
+ * Helper functions for the Accessibility Statement functionality
  *
- * To ouput a view you would want to echo it
- *
- * @param  string $file_name excluding file extension.
- * @param  array  $vars Variables to make available in the file.
- *
- * @return string The view HTML.
+ * @package Accessibility Statement Generator
  */
-function psg_view( $file_name, $vars = array() ) {
-	foreach ( $vars as $key => $value ) {
-		${$key} = $value;
-	}
-
-	ob_start();
-
-	include plugin_dir_path( __FILE__ ) . '/' . $file_name . '.php';
-
-	return ob_get_clean();
-}
-
 
 /**
  * Determine if we have a selected accessibility statement, and that it isn't in the trash
@@ -35,11 +17,11 @@ function wp_accessibility_statement_exists() {
 	if ( empty( $accessibility_statement_id ) ) {
 		return false;
 	}
-	
+
 	$accessibility_statement = get_post( $accessibility_statement_id );
 
 	// Accessibility Statement is a Post?
-	if ( ! $accessibility_statement instanceof WP_Post ){
+	if ( ! $accessibility_statement instanceof WP_Post ) {
 		return false;
 	}
 
@@ -57,7 +39,7 @@ function wp_accessibility_statement_exists() {
  * @return  string  URL of the Accessibility Statement
  */
 function wp_get_accessibility_statement_page_url() {
-	$url            = '';
+	$url                        = '';
 	$accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_statement' );
 
 	if ( ! empty( $accessibility_statement_id ) && get_post_status( $accessibility_statement_id ) === 'publish' ) {

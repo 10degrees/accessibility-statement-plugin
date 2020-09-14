@@ -1,4 +1,7 @@
 <?php
+/**
+ * Main Plugin file for the Accessibility Statement Generator
+ */
 
 require_once 'class-statement-generator.php';
 
@@ -35,6 +38,11 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	public function create_accessibility_statement() {
+		if ( ! $this->check_nonce( 'create_accessibility_statement' ) ) {
+			wp_redirect( admin_url( 'options-general.php?page=accessibility-statement&failed-nonce=1' ) );
+			exit;
+		}
+
 		$default_accessibility_statement_content = StatementGenerator::get_default_content();
 
 		$accessibility_statement_id = wp_insert_post(
@@ -59,11 +67,31 @@ class AccessibilityStatementPlugin {
 	}
 
 	/**
+	 * Check a nonce
+	 *
+	 * @param   string  $nonce_field  Nonce name
+	 *
+	 * @return  boolean                True if we can verify the nonce, else false
+	 */
+	private function check_nonce( $nonce_field ) {
+		if ( ! isset( $_POST[ $nonce_field ] ) || ! wp_verify_nonce( $_POST[ $nonce_field ], $nonce_field ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Set the accessibility statement page
 	 *
 	 * @return  void
 	 */
 	public function set_accessibility_statement() {
+		if ( ! $this->check_nonce( 'set_accessibility_statement' ) ) {
+			wp_redirect( admin_url( 'options-general.php?page=accessibility-statement&failed-nonce=1' ) );
+			exit;
+		}
+
 		$accessibility_page_id = isset( $_POST['page_for_accessibility_statement'] ) ? (int) $_POST['page_for_accessibility_statement'] : 0;
 
 		update_option( 'wp_page_for_accessibility_statement', $accessibility_page_id );
@@ -81,10 +109,27 @@ class AccessibilityStatementPlugin {
 		$screen = get_current_screen();
 
 		if ( 'settings_page_accessibility-statement' === $screen->id ) {
+			$this->display_nonce_notices();
 			$this->get_update_notices();
 			$this->get_creation_notices();
 
 			$this->get_selected_statement_notices();
+		}
+	}
+
+	/**
+	 * Display notices relating to nonce checks
+	 *
+	 * @return  void
+	 */
+	private function display_nonce_notices() {
+		if ( isset( $_GET['failed-nonce'] ) && $_GET['failed-none'] ) {
+			add_settings_error(
+				'page_for_accessibility_statement',
+				'page_for_accessibility_statement',
+				__( 'Nonce couldn\'t be verified.' ),
+				'error',
+			);
 		}
 	}
 
@@ -198,8 +243,6 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	public function page_contents() {
-		echo psg_view(
-			'settings-page',
-		);
+		include 'settings-page.php';
 	}
 }

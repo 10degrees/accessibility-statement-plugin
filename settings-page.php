@@ -1,6 +1,8 @@
 <?php
 /**
  * Admin Page
+ *
+ * @package Accessibility Statement Generator
  */
 
 if ( ! current_user_can( 'manage_privacy_options' ) ) {
@@ -90,7 +92,7 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 							)
 						);
 
-						wp_nonce_field( 'set_accessibility_statement' );
+						wp_nonce_field( 'set_accessibility_statement', 'set_accessibility_statement');
 
 						submit_button( __( 'Use This Page' ), 'primary', 'submit', false, array( 'id' => 'set-page' ) );
 						?>
@@ -110,7 +112,7 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 					</span>
 
 					<?php
-					wp_nonce_field( 'create_accessibility_statement' );
+					wp_nonce_field( 'create_accessibility_statement', 'create_accessibility_statement' );
 
 					submit_button( __( 'Create New Page' ), 'primary', 'submit', false, array( 'id' => 'create-page' ) );
 					?>
