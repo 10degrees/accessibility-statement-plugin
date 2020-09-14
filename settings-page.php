@@ -8,13 +8,53 @@ if ( ! current_user_can( 'manage_privacy_options' ) ) {
 }
 
 $accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_statement' );
+
+$accessibility_statement_exists = wp_accessibility_statement_exists();
+
 ?>
 
 <div class="wrap">
 	<h1><?php _e( 'Accessibility Settings', 'a11y-statement' ); ?></h1>
 	<h2><?php _e( 'Accessibility Statement Page', 'a11y-statement' ); ?></h2>
 
-	<table role="presentation">
+	<?php
+
+	if ( $accessibility_statement_exists ) {
+		$edit_href = add_query_arg(
+			array(
+				'post'   => $accessibility_statement_id,
+				'action' => 'edit',
+			),
+			admin_url( 'post.php' )
+		);
+
+		$view_href = get_permalink( $accessibility_statement_id );
+		
+		?>
+		<p>
+			<?php
+			if ( 'publish' === get_post_status( $accessibility_statement_id ) ){
+				printf(
+					/* translators: 1: URL to edit Accessibility Statement page, 2: URL to view Accessibility Statement page. */
+					__( '<a href="%1$s">Edit</a> or <a href="%2$s">view</a> your Accessibility Statement page content.' ),
+					esc_url( $edit_href ),
+					esc_url( $view_href )
+				);
+			} else {
+				printf(
+					/* translators: 1: URL to edit Accessibility Statement page, 2: URL to preview Accessibility Statement page. */
+					__( '<a href="%1$s">Edit</a> or <a href="%2$s">preview</a> your Accessibility Statement page content.' ),
+					esc_url( $edit_href ),
+					esc_url( $view_href )
+				);
+			}
+			?>
+		</p>
+		<?php
+	}
+	?>
+
+	<table role="presentation" class="form-table tools-privacy-policy-page">
 		<tr>
 			<th scope="row">
 				<label for="page_for_accessibility_statement">
