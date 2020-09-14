@@ -35,6 +35,25 @@ class AccessibilityStatementPlugin {
 		add_action( 'admin_notices', array( $this, 'add_admin_notices' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'display_post_states', array( $this, 'add_post_state' ), 10, 2 );
+	}
+
+	/**
+	 * Add the Accessibility Statement post state
+	 *
+	 * @param   array  $post_states  Post States for the current post
+	 * @param   WP_Post  $post         Current Post
+	 *
+	 * @return  array                Post States for the current post
+	 */
+	public function add_post_state($post_states, $post){
+		$statement_id = get_option( 'accessibility_statement_page' );
+
+		if ( $statement_id == $post->ID ) {
+			$post_states[] = __( 'Accessibility Statement', 'a11y-statement' );
+		}
+	
+		return $post_states;
 	}
 
 	/**

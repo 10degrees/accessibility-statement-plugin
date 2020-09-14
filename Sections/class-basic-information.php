@@ -27,7 +27,7 @@ class BasicInformation extends AbstractSettingsSection {
 		$this->title = __( 'Basic Information', 'a11y-statement' );
 		
 		$this->fields = array(
-			new PageDropdown(array(
+			new PageSelect(array(
 				'id' => 'accessibility_statement_page',
 				'label' => __('Page', 'a11y-statement'),
 			)),

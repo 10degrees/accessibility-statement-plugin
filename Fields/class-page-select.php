@@ -2,7 +2,7 @@
 /**
  * Displays a dropdown of all pages on the site.
  */
-class PageDropdown extends AbstractField {
+class PageSelect extends AbstractField {
 	/**
 	 * Render a list of pages
 	 *
