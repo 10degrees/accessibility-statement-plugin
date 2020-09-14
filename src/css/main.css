@@ -1,8 +1,0 @@
-.dynamicTextField .inputs {
-    display: flex;
-    flex-direction: column;
-}
-
-.dynamicTextField .inputs input {
-    margin-bottom: 1rem;
-}
