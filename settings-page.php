@@ -18,7 +18,6 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 	<h2><?php _e( 'Accessibility Statement Page', 'a11y-statement' ); ?></h2>
 
 	<?php
-
 	if ( $accessibility_statement_exists ) {
 		$edit_href = add_query_arg(
 			array(

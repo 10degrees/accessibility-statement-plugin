@@ -50,3 +50,19 @@ function wp_accessibility_statement_exists() {
 
 	return true;
 }
+
+/**
+ * Get the URL of the Accessibility Statement
+ *
+ * @return  string  URL of the Accessibility Statement
+ */
+function wp_get_accessibility_statement_page_url() {
+	$url            = '';
+	$accessibility_statement_id = (int) get_option( 'wp_page_for_accessibility_statement' );
+
+	if ( ! empty( $accessibility_statement_id ) && get_post_status( $accessibility_statement_id ) === 'publish' ) {
+		$url = (string) get_permalink( $accessibility_statement_id );
+	}
+
+	return apply_filters( 'accessibility_statement_url', $url, $accessibility_statement_id );
+}
