@@ -145,6 +145,16 @@ if ( ! empty( $accessibility_statement_id ) ) {
 
 				<form action="" method="POST">
 					<input type="hidden" name="action" value="create-accessibility-statement">
+					<span>
+						<?php
+						if( $has_pages ) {
+							_e( 'Or:' );
+						} else {
+							_e( 'There are no pages.' );
+						}
+						?>
+					</span>
+
 					<?php
 					wp_nonce_field( 'create-accessibility-statement' );
 
