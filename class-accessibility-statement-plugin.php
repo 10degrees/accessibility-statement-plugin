@@ -22,6 +22,15 @@ class AccessibilityStatementPlugin {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+		add_action( 'display_post_states', array( $this, 'add_post_state' ), 10, 2)  ;
+	}
+
+	public function add_post_state($post_states, $post) {
+		if ( intval( get_option( 'wp_page_for_accessibility_statement' ) ) === $post->ID ) {
+			$post_states['page_for_accessibility_statement'] = _x( 'Accessibility Statement Page', 'page label' );
+		}
+
+		return $post_states;
 	}
 
 	/**
