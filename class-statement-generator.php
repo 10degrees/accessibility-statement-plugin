@@ -4,6 +4,7 @@
  * Generates the Accessibility Statement HTML based upon user inputs
  */
 class StatementGenerator {
+	
 	/**
 	 * Create statement page
 	 *
