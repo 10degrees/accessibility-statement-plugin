@@ -75,7 +75,7 @@ class DynamicTextFields extends AbstractField {
 		$new_array = array();
 		foreach ( $input as $value ) {
 			if ( $value ) {
-				$new_array[] = $value;
+				$new_array[] = sanitize_text_field( $value );
 			}
 		}
 
