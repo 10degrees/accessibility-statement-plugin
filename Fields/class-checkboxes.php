@@ -46,4 +46,21 @@ class Checkboxes extends AbstractField {
 			<?php
 		}
 	}
+
+	/**
+	 * Sanitize the checkbox input
+	 *
+	 * @param   array  $input  Chosen values
+	 *
+	 * @return  array          Sanitizes values
+	 */
+	public function sanitize( $input ) {
+		$sanitized_input = array();
+
+		foreach ($input as $checkbox_value) {
+			$sanitized_input[] = sanitize_text_field( $checkbox_value );
+		}
+
+		return $sanitized_input;
+	}
 }
