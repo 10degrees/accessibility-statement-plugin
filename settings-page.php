@@ -6,7 +6,21 @@
 $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();
 
 if ( $_GET['settings-updated'] == 'true' ) { 
-	StatementGenerator::create_page();
+	$page_generated = StatementGenerator::create_page();
+
+	if ( $page_generated ) {
+		?>
+		<div class="notice updated">
+			<p><strong><?php _e('Accessibility Statement updated.'); ?></strong></p>
+		</div>
+		<?php
+	} else {
+		?>
+		<div class="notice error">
+			<p><strong><?php _e('Failed to update Accessibility Statement.'); ?></strong></p>
+		</div>
+		<?php
+	}
 }
 ?>  
 

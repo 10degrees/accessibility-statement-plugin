@@ -67,7 +67,7 @@ class Repeater extends AbstractField {
 		$saved_fields = $this->get_rows_from_saved_values( $template );
 
 		$blank_fields = array();
-		if ( ! count( $this->saved_rows ) ) {
+		if ( ! $this->saved_rows || ! count( $this->saved_rows ) ) {
 			$blank_fields = $this->get_blank_row( $template );
 		}
 

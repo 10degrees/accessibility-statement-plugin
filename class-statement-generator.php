@@ -20,9 +20,17 @@ class StatementGenerator {
 
 		if ( $page_id && $page_exists ) {
 			$statement_page['ID'] = $page_id;
+		} else {
+			return false;
 		}
 
 		$inserted_post = wp_update_post( $statement_page );
+
+		if ( ! $inserted_post ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
