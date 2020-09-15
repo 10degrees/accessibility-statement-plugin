@@ -41,4 +41,15 @@ class PageSelect extends AbstractField {
 			<?php
 		}
 	}
+
+	/**
+	 * Sanitize the chosen page ID
+	 *
+	 * @param   int  $input  Chosen page ID
+	 *
+	 * @return  int          Sanitized ID
+	 */
+	public function sanitize( $input ) {
+		return absint( $input );
+	}
 }
