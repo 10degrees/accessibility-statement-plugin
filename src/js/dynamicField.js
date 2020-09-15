@@ -28,6 +28,9 @@ class DynamicField
         let allInputs = [...document.querySelectorAll('.' + this.fieldName)];
         let singleRow = allInputs.slice(0, this.inputsPerRow);
 
+        let containerDiv = document.createElement('div');
+        containerDiv.classList.add('repeater-row');
+
         singleRow.forEach(field => {
             let clonedField = field.cloneNode(true);
             let textInput = clonedField.querySelector('input[type="text"]');
@@ -41,9 +44,11 @@ class DynamicField
                 textInput.name = newId;
             }
 
-            this.btn.parentNode.insertBefore(clonedField, this.btn);
-            
+            containerDiv.appendChild(clonedField);
         });
+
+        this.btn.parentNode.insertBefore(containerDiv, this.btn);
+        
         this.numberOfRows++;
     }
 }

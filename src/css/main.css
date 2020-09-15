@@ -3,6 +3,11 @@
     flex-direction: column;
 }
 
-.dynamicTextField .inputs input {
+.dynamicTextField .inputs input,
+.repeater-field {
     margin-bottom: 1rem;
+}
+
+.repeater-row {
+    margin-bottom: 2rem;
 }

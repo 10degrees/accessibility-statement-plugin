@@ -150,15 +150,28 @@ class Repeater extends AbstractField {
 				$key_index = $i % $this->original_number_of_inputs;
 				$value     = array_values( $this->saved_rows[ $row_index ] )[ $key_index ];
 			}
+
+			$first_field = $i === 0;
+			$new_row = ( $i % $this->original_number_of_inputs ) === 0;
+			$not_last_row = count($this->saved_rows) != $row_index;
+
+			if ( $first_field || ( $new_row && $not_last_row ) ) {
+				?>
+				<div class='repeater-row'>
+				<?php
+			}
 			?>
-			<div class="<?php echo $this->id; ?>">
+			<div class="repeater-field <?php echo $this->id; ?>">
 				<?php $field->render_field( $value ); ?>
 			</div>
 			<?php
 			$i++;
 
 			if ( ( $i % $this->original_number_of_inputs ) === 0 ) {
-				$row_index++;
+				$row_index++; 
+				?>
+				</div>
+				<?php
 			}
 		}
 	}
