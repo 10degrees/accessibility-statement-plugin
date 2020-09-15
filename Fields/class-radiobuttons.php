@@ -46,4 +46,15 @@ class RadioButtons extends AbstractField {
 		</fieldset>
 		<?php
 	}
+
+	/**
+	 * Sanitize the radio button input
+	 *
+	 * @param   string  $input  Chosen radio button value
+	 *
+	 * @return  string          Sanitized value
+	 */
+	public function sanitize( $input ) {
+		return sanitize_text_field( $input );
+	}
 }
