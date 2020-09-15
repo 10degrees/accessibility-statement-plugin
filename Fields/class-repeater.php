@@ -153,7 +153,7 @@ class Repeater extends AbstractField {
 
 			$first_field = $i === 0;
 			$new_row = ( $i % $this->original_number_of_inputs ) === 0;
-			$not_last_row = count($this->saved_rows) != $row_index;
+			$not_last_row = count( $this->saved_rows ) != $row_index;
 
 			if ( $first_field || ( $new_row && $not_last_row ) ) {
 				?>

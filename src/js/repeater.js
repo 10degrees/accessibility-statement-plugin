@@ -1,4 +1,4 @@
-class DynamicField
+class Repeater
 {
     constructor(btn){
         this.btn = btn;
@@ -53,4 +53,4 @@ class DynamicField
     }
 }
 
-export default DynamicField;
+export default Repeater;

@@ -1,6 +1,6 @@
 import ControlFields from './controlFields.js';
 import DynamicTextField from './dynamicTextField.js';
-import DynamicField from './dynamicField.js';
+import Repeater from './repeater.js';
 
 new ControlFields();
 
@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let dynamicAddButtons = document.querySelectorAll('.add-dynamic');
     dynamicAddButtons.forEach(btn => {
-        new DynamicField(btn);
+        new Repeater(btn);
     })
 });
