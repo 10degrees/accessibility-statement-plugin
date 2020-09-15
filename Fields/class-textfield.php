@@ -21,4 +21,15 @@ class TextField extends AbstractField {
 			<input type="text" name="<?php echo esc_attr( $this->id ); ?>" id="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $rendered_value ); ?>" class="regular-text">
 		<?php
 	}
+
+	/**
+	 * Sanitize the text field input
+	 *
+	 * @param   string  $input  Text field input
+	 *
+	 * @return  string          Sanitized input
+	 */
+	public function sanitize( $input ) {
+		return sanitize_text_field( $input );
+	}
 }
