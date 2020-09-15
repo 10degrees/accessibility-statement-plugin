@@ -80,6 +80,7 @@ $accessibility_statement_exists = wp_accessibility_statement_exists();
 				if ( $has_pages ) :
 					?>
 					<form action="admin-post.php" method="POST" class="main-settings">
+						<?php echo $accessibility_statement_id; ?>
 						<input type="hidden" name="action" value="set_accessibility_statement">
 						<?php
 						wp_dropdown_pages(
