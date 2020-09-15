@@ -186,8 +186,26 @@ class Repeater extends AbstractField {
 		$sanitized_input = array();
 
 		foreach ( $input as $row ) {
-			if ( array_filter( $row ) ) {
-				$sanitized_input[] = $row;
+			$row_have_value = array_filter( $row );
+
+			if ( $row_have_value ) {
+				$sanitized_row = array();
+
+				$i = 0;
+				foreach ($row as $key => $value) {
+					$field = $this->fields[$i];
+					$field_class = get_class( $field );
+					
+					if ($field_class === "TextField") {
+						$sanitized_row[$key] = sanitize_text_field( $row[$key] );
+					} else {
+						$sanitized_row[$key] = $row[$key];
+					}
+
+					$i++;
+				}
+
+				$sanitized_input[] = $sanitized_row;
 			}
 		}
 
