@@ -21,4 +21,15 @@ class TextArea extends AbstractField {
 			<textarea name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>" cols="50" rows="5"><?php echo $rendered_value; ?></textarea>
 		<?php
 	}
+
+	/**
+	 * Sanitize the textarea input
+	 *
+	 * @param   string  $input  Input
+	 *
+	 * @return  string          Sanitized input
+	 */
+	public function sanitize( $input ) {
+		return sanitize_textarea_field( $input );
+	}
 }
