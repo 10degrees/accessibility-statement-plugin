@@ -45,6 +45,15 @@ abstract class AbstractField {
 	 * @param array $args  Arguments.
 	 */
 	public function __construct( $args ) {
+		$defaults = [
+			'id' => '',
+			'label' => '',
+			'top_label' => '',
+			'description' => '',
+			'other' => array(),
+			'default_value' => '',
+		];
+
 		[
 			'id' => $id,
 			'label' => $label,
@@ -52,7 +61,7 @@ abstract class AbstractField {
 			'description' => $description,
 			'other' => $other,
 			'default_value' => $default_value,
-		] = $args;
+		] = $args + $defaults;
 
 		$this->id            = $id;
 		$this->label         = $label;
@@ -71,6 +80,10 @@ abstract class AbstractField {
 	 * @return  void
 	 */
 	public function add_class( $class ) {
+		if(!isset($this->other_args['class'])){
+			$this->other_args['class'] = '';
+		}
+
 		$this->other_args['class'] .= $class . ' ';
 	}
 
@@ -107,6 +120,15 @@ abstract class AbstractField {
 		} else {
 			$this->other_args = array();
 		}
+	}
+
+	/**
+	 * Get the other arguments
+	 *
+	 * @return  array  Other arguments
+	 */
+	public function get_other_args() {
+		return $this->other_args;
 	}
 
 	/**
@@ -159,11 +181,12 @@ abstract class AbstractField {
 	/**
 	 * Render this field
 	 *
+	 * @param array $args Array of additional arguments passed to add_settings_field
 	 * @param mixed $value  field value.
 	 *
 	 * @return  void
 	 */
-	public function render_field( $value = null ) {
+	public function render_field( $args = array(), $value = null ) {
 		$this->render_top_label();
 
 		$this->render_input( $value );

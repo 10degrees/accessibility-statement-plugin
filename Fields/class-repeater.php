@@ -162,7 +162,7 @@ class Repeater extends AbstractField {
 			}
 			?>
 			<div class="repeater-field <?php echo $this->id; ?>">
-				<?php $field->render_field( $value ); ?>
+				<?php $field->render_field( $field->get_other_args(), $value ); ?>
 			</div>
 			<?php
 			$i++;

@@ -5,7 +5,7 @@
 
 $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $sections[0]->get_id();
 
-if ( $_GET['settings-updated'] == 'true' ) { 
+if ( isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true' ) { 
 	$page_generated = StatementGenerator::create_page();
 
 	if ( $page_generated ) {

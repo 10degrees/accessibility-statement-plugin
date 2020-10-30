@@ -21,8 +21,10 @@ class DynamicTextFields extends AbstractField {
 			$this->button_label = $args['button_label'];
 		}
 
-		if ( ! $args['other'] ) {
-			$args['other'] = array();
+		if ( !isset($args['other']) || ! $args['other'] ) {
+			$args['other'] = array(
+				'class' => '',
+			);
 		}
 
 		$args['other']['class'] .= 'dynamicTextField';
