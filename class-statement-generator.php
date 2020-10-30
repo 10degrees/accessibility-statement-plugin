@@ -79,7 +79,15 @@ class StatementGenerator {
 			}
 		}
 
-		return implode( '', $strings );;
+		$content = implode( '', $strings );
+
+		/**
+		 * Filters the default content for the Accessibility Statement
+		 *
+		 * @param string $content The default Accessibility Statement content
+		 * @param bool $use_blocks Whether the content should be formatted for the block editor
+		 */
+		return apply_filters( 'wp_get_default_accessibility_statement_content', $content, $use_blocks );
 	}
 
 }
