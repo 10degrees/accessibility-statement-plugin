@@ -172,7 +172,7 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	private function display_create_statement_notices() {
-		if ( $_GET['page-created-error'] ) {
+		if ( isset( $_GET['page-created-error'] ) && $_GET['page-created-error'] ) {
 			add_settings_error(
 				'page_for_accessibility_statement',
 				'page_for_accessibility_statement',
@@ -188,7 +188,7 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	private function display_update_statement_notices() {
-		if ( $_GET['page-updated'] ) {
+		if ( isset( $_GET['page-updated'] ) && $_GET['page-updated'] ) {
 			$accessibility_statement_updated_message = __( 'Accessibility Statement page updated successfully.' );
 
 			$accessibility_page_id = get_option( 'wp_page_for_accessibility_statement' );
