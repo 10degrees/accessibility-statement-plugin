@@ -51,6 +51,9 @@ class StatementGenerator {
 		$strings[] .= '<h2>' . __( 'Evaluation statement' ) . '</h2>';
 		$strings[] .= '<p>' . __( 'In this section you should provide the user with a link to your evaluation statement (if you have one).' ) . '</p>';
 
+		$strings[] .= '<h2>' . __( 'Other evidence' ) . '</h2>';
+		$strings[] .= '<p>' . __( 'In this section you should provide any additional evidence.' ) . '</p>';
+
 		$strings[] .= '<h2>' . __( 'Formal approval of this accessibility statement' ) . '</h2>';
 		$strings[] .= '<p>' . __( 'In this section you should provide the details of who approved the accessibility statement, e.g. the Communication Department of your company.' ) . '</p>';
 
