@@ -43,11 +43,13 @@ class StatementGenerator {
 
 		self::get_introduction();
 
+		self::get_measures();
+
 		self::get_status_description();
 
-		self::get_feedback_section();
+		self::get_additional_considerations();
 
-		self::get_measures();
+		self::get_feedback_section();
 
 		self::get_compatibility_information();
 
@@ -58,8 +60,6 @@ class StatementGenerator {
 		self::get_assessment_approaches();
 
 		self::get_evidence();
-
-		self::get_additional_considerations();
 
 		self::get_approval_statement();
 
