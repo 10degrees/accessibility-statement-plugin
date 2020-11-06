@@ -36,5 +36,5 @@ This version of the plugin has no build tooling, e.g. Gulp or Webpack, and so it
 
 ## Related Links
 
-https://core.trac.wordpress.org/ticket/50673
-https://www.w3.org/WAI/planning/statements/generator/#create
+- https://core.trac.wordpress.org/ticket/50673
+- https://www.w3.org/WAI/planning/statements/generator/#create
