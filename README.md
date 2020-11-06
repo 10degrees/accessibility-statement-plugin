@@ -16,7 +16,7 @@ Requirements:
 
 ## Features
 
-1. Generate the basic structure of an accessibility statement for a site in a single click (content inspired by https://www.w3.org/WAI/planning/statements/generator/#create) or:
+1. Generate the basic structure of an accessibility statement for a site in a single click (content from https://www.w3.org/WAI/planning/statements/generator/#create) or:
 2. Choose which page to use as the accessibility statement.
 3. Display an 'Accessibility Statement Page' tag next to the accessibility statement page when viewing all pages.
 
