@@ -26,10 +26,10 @@ This plugin **does not** generate a full accessibility statement. It instead pro
 
 ### advanced-version
 
-Initially we are focusing on the 'basic' version of the feature plugin (in the `master` branch), which replicates the Privacy Policy tool. In the `advanced-version` branch you can find a version of the plugin where the accessibility statement is generated via inputted data.
+Initially we are focusing on the 'basic' version of the feature plugin (in the `master` branch), which replicates the Privacy Policy tool. In the `advanced-version` branch you can find a version of the plugin where the accessibility statement is generated using data inputted by the user.
 
 To view this version of the plugin:
-1. `git fetch origin advanced-version` - Get all branches
+1. `git fetch origin advanced-version`
 2. `git checkout advanced-version`
 
 This version of the plugin has no build tooling, e.g. Gulp or Webpack, and so its JavaScript may not function on older browsers e.g. IE11. 
