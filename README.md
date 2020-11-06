@@ -18,7 +18,7 @@ Requirements:
 
 1. Generate the basic structure of an accessibility statement for a site in a single click (content inspired by https://www.w3.org/WAI/planning/statements/generator/#create) or:
 2. Choose which page to use as the accessibility statement.
-3. Display an 'Accessibility Statement' tag next to the accessibility statement page when viewing all pages.
+3. Display an 'Accessibility Statement Page' tag next to the accessibility statement page when viewing all pages.
 
 This plugin **does not** generate a full accessibility statement. It instead provides a page with useful headings and prompts to be used to understand what content an accessibility statement should contain.
 
@@ -29,7 +29,7 @@ This plugin **does not** generate a full accessibility statement. It instead pro
 Initially we are focusing on the 'basic' version of the feature plugin (in the `master` branch), which replicates the Privacy Policy tool. In the `advanced-version` branch you can find a version of the plugin where the accessibility statement is generated via inputted data.
 
 To view this version of the plugin:
-1. `git fetch` - Get all branches
+1. `git fetch origin advanced-version` - Get all branches
 2. `git checkout advanced-version`
 
 This version of the plugin has no build tooling, e.g. Gulp or Webpack, and so its JavaScript may not function on older browsers e.g. IE11. 
