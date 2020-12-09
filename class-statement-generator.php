@@ -17,7 +17,7 @@ class StatementGenerator {
 
 		$strings[] = '<h1>' . sprintf( __('Accessibility Statement for %s'), get_bloginfo( 'name', 'display' )) . '</h1>';
 
-		$strings[] .= '<p>' . __( 'We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relvent accessibility standards.' ) . '</p>';
+		$strings[] .= '<p>' . __( 'We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, and applying the relevant accessibility standards.' ) . '</p>';
 
 		$strings[] .= '<h2>' . __( 'Measures to support accessibility' ) . '</h2>';
 		$strings[] .= '<p>' . __( 'In this section you should list the measures you\'ve taken to support the accessibility of your site.' ) . '</p>';
