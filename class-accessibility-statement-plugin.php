@@ -52,7 +52,7 @@ class AccessibilityStatementPlugin {
 				'post_type'    => 'page',
 				'post_content' => $default_accessibility_statement_content,
 			),
-			true,
+			true
 		);
 
 		if ( is_wp_error( $accessibility_statement_id ) ) {
@@ -127,7 +127,7 @@ class AccessibilityStatementPlugin {
 				'page_for_accessibility_statement',
 				'page_for_accessibility_statement',
 				__( 'Nonce couldn\'t be verified.' ),
-				'error',
+				'error'
 			);
 		}
 	}
@@ -147,7 +147,7 @@ class AccessibilityStatementPlugin {
 					'page_for_accessibility_statement',
 					'page_for_accessibility_statement',
 					__( 'The currently selected Accessibility Statement page does not exist. Please create or select a new page.' ),
-					'error',
+					'error'
 				);
 			} else {
 				if ( 'trash' === $accessibility_statement->post_status ) {
@@ -177,7 +177,7 @@ class AccessibilityStatementPlugin {
 				'page_for_accessibility_statement',
 				'page_for_accessibility_statement',
 				__( 'Unable to create an Accessibility Statement.' ),
-				'error',
+				'error'
 			);
 		}
 	}
