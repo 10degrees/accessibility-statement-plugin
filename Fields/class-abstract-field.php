@@ -154,7 +154,7 @@ abstract class AbstractField {
 			array( $this, 'render_field' ),
 			$this->section_id,
 			$this->section_id,
-			$this->other_args,
+			$this->other_args
 		);
 
 		register_setting(

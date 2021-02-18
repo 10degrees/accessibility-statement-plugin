@@ -55,7 +55,7 @@ abstract class AbstractSettingsSection {
 			$this->id,
 			$this->title,
 			array( $this, 'render' ),
-			$this->id,
+			$this->id
 		);
 	}
 

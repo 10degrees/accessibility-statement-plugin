@@ -236,8 +236,8 @@ class StatementGenerator {
 				'status'       => $conformance_status,
 				'details'      => $conformance_details,
 				'standard'     => $standard,
-				'website_name' => get_option( 'website_name' ),
-			),
+				'website_name' => get_option( 'website_name' )
+			)
 		);
 	}
 
