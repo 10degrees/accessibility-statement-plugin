@@ -122,7 +122,7 @@ class AccessibilityStatementPlugin {
 	 * @return  void
 	 */
 	private function display_nonce_notices() {
-		if ( isset( $_GET['failed-nonce'] ) && $_GET['failed-none'] ) {
+		if ( isset( $_GET['failed-nonce'] ) && $_GET['failed-nonce'] ) {
 			add_settings_error(
 				'page_for_accessibility_statement',
 				'page_for_accessibility_statement',
